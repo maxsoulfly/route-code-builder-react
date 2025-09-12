@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import { MODES, CLIMATES, CARGO_BY_CLIMATE, STATIONS } from "./data/dictionaries";
 import AddStation from "./components/AddStation";
+import StationList from "./components/StationList";
+
 
 
 
@@ -126,23 +128,8 @@ function App() {
 
         <AddStation onAddStation={(station) => setStations([...stations, station])} />
 
-        <section>
-            <ul className="stack">
-              {stations.map(([code, label]) => (
-                <li key={code} className="row">
-                  <span>{code} - {label}</span>
-                  <button
-                    type="button"
-                    className="btn"
-                    onClick={() => setStations(stations.filter(([c]) => c !== code))}
-                  >
-                    Remove
-                  </button>
-                </li>
-              ))}
-            </ul>
-        </section>
-        
+        <StationList stations={stations} onRemoveStation={(code) => setStations(stations.filter(([c]) => c !== code))}/>
+          
       </main>
 
     </>
