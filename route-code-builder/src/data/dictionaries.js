@@ -1,4 +1,17 @@
 // src/data/dictionaries.js
+export const MODES = [
+    ["GT", "Ground Transit"],
+    ["RT", "Rail Transit"],
+    ["WT", "Water Transit"],
+    ["AT", "Air Transit"],
+];
+export const CLIMATES = [
+    ["temperate", "Temperate"],
+    ["sub-arctic", "Sub-Arctic"],
+    ["sub-tropical", "Sub-Tropical"],
+    ["toyland", "Toyland"],
+];
+
 export const CARGO_BY_CLIMATE = {
     temperate: [
         ["PASS", "Passengers"],
@@ -54,3 +67,10 @@ export const CARGO_BY_CLIMATE = {
         ["PASS", "Passengers"],
     ],
 };
+
+export const STATIONS = [
+    ["RZV32", "RZV-32 Junk Yard"],
+    ["SLG", "Slagmere Steel Mill"],
+    ["NP", "Nova Prospekt"],
+    ["SV", "Sevastopol"],
+];

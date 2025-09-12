@@ -90,8 +90,18 @@ button:focus-visible {
 .row {
   display    : flex;
   gap        : 1rem;
-  align-items: center;
+  align-items: flex-start;
+  flex-wrap  : wrap;
+  /* allows wrapping on small screens */
 }
+
+.row>* {
+  flex     : 1;
+  /* each child takes equal width */
+  min-width: 200px;
+  /* don’t let them shrink too small */
+}
+
 
 .btn {
   padding      : 0.4rem 0.8rem;
@@ -110,4 +120,69 @@ button:focus-visible {
   display       : flex;
   flex-direction: column;
   gap           : 1rem;
+}
+
+/* Give sections space */
+section {
+  margin-top   : 2rem;
+  padding      : 1rem;
+  background   : #16181d;
+  border-radius: 8px;
+}
+
+/* Headings hierarchy */
+h1 {
+  font-size    : 1.8rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size    : 1.2rem;
+  margin-top   : 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Labels stack neatly */
+label {
+  display       : flex;
+  flex-direction: column;
+  gap           : 0.25rem;
+  font-weight   : 500;
+}
+
+/* Inputs/selects look consistent */
+input,
+select {
+  padding      : 0.4rem;
+  border       : 1px solid #444;
+  border-radius: 4px;
+  background   : #1a1d22;
+  color        : #e7eaf0;
+}
+
+/* Station list nicer */
+ul {
+  list-style: none;
+  padding   : 0;
+  margin    : 0.5rem 0;
+}
+
+ul li {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+  margin-bottom  : 0.25rem;
+}
+
+.code-output {
+  font-family   : monospace;
+  font-size     : 1.5rem;
+  font-weight   : bold;
+  background    : #0d1117;
+  color         : #00ff88;
+  padding       : 0.75rem 1rem;
+  border        : 2px solid #00ff88;
+  border-radius : 8px;
+  text-align    : center;
+  letter-spacing: 1px;
 }
