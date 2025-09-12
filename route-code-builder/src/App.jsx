@@ -6,6 +6,7 @@ import { MODES, CLIMATES, CARGO_BY_CLIMATE, STATIONS } from "./data/dictionaries
 import AddStation from "./components/AddStation";
 import StationList from "./components/StationList";
 import Inputs from './components/Inputs';
+import Output from './components/Output';
 
 
 
@@ -41,24 +42,11 @@ function App() {
       <main className="stack" style={{ padding: '1rem', maxWidth: 800, margin: '0 auto' }}>
         <h1>Route Code Builder</h1>
 
-        <section>
-          <h2>Output</h2>
-          <p className="code-output">
-            {mode}-{origin}&gt;{destination}-{cargo}-{routeNumber.padStart(2, "0")}
-          </p>
-          <p>
-            <button
-              type="button"
-              className="btn"
-              onClick={() => navigator.clipboard.writeText(
-                `${mode}-${origin}>${destination}-${cargo}-${routeNumber.padStart(2, "0")}`
-              )}
-            >
-              Copy Code
-            </button>
-          </p>
+        
 
-        </section>
+        <Output
+          values={{ mode, origin, destination, cargo, routeNumber }}
+        />
 
         <Inputs
           stations={stations}
