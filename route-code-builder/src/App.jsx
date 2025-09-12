@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
@@ -7,15 +7,31 @@ import { MODES, CLIMATES, CARGO_BY_CLIMATE, STATIONS } from "./data/dictionaries
 
 function App() {
   const [mode, setMode] = useState("GT");
-  const [stations, setStations] = useState(STATIONS);
-  const [origin, setOrigin] = useState("RZV32");
-  const [destination, setDestination] = useState("SLG");
+  const [stations, setStations] = useState(() => {
+    const saved = localStorage.getItem("stations");
+    return saved ? JSON.parse(saved) : STATIONS;
+  });
+  const [origin, setOrigin] = useState(() => stations[0]?.[0] || "");
+  const [destination, setDestination] = useState(() => stations[1]?.[0] || "");
   const [climate, setClimate] = useState("temperate");
   const [cargo, setCargo] = useState("PASS");
   const [routeNumber, setRouteNumber] = useState("00");
 
   const [newStationCode, setNewStationCode] = useState("");
   const [newStationLabel, setNewStationLabel] = useState("");
+
+  // Load stations from localStorage once on app start
+  useEffect(() => {
+    const saved = localStorage.getItem("stations");
+    if (saved) {
+      setStations(JSON.parse(saved));
+    }
+  }, []);
+
+  // Save stations to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem("stations", JSON.stringify(stations));
+  }, [stations]);
 
 
   return (
