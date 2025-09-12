@@ -42,15 +42,13 @@ function App() {
 
         </section>
 
-
-        
         <section>
           
           <div className="stack">
             <h2>Inputs</h2>
 
             <label>Climate 
-              <select className="field" value={climate} onChange={(e) => setClimate(e.target.value)} >
+              <select className="field yellow" value={climate} onChange={(e) => setClimate(e.target.value)} >
                 {CLIMATES.map(([code, label]) => (
                   <option key={code} value={code}>
                     {label}
@@ -61,7 +59,7 @@ function App() {
 
             <div className="row">
               <label>Mode:
-                <select className="field" value={mode} onChange={(e) => setMode(e.target.value)}>
+                <select className="field blue" value={mode} onChange={(e) => setMode(e.target.value)}>
                     {MODES.map(([code, label]) => (
                     <option key={code} value={code}>
                       {label}
@@ -72,7 +70,7 @@ function App() {
 
               <label>
                 Cargo
-                <select className="field" value={cargo} onChange={(e) => setCargo(e.target.value)}>
+                <select className="field blue" value={cargo} onChange={(e) => setCargo(e.target.value)}>
                   {CARGO_BY_CLIMATE[climate].map(([code, label]) => (
                     <option key={code} value={code}>
                       {label}
@@ -84,7 +82,7 @@ function App() {
 
             <div className="row">
               <label>Origin: 
-                <select className="field" value={origin} onChange={(e) => setOrigin(e.target.value)}>
+                <select className="field green" value={origin} onChange={(e) => setOrigin(e.target.value)}>
                   {stations.map(([code, label]) => (
                     <option key={code} value={code}>
                       {label}
@@ -95,7 +93,7 @@ function App() {
 
               <label>
                 Destination:
-                <select className="field" value={destination} onChange={(e) => setDestination(e.target.value)}>
+                <select className="field red" value={destination} onChange={(e) => setDestination(e.target.value)}>
                   {stations.filter(([code]) => code !== origin).map(([code, label]) => (
                     <option key={code} value={code}>
                       {label}

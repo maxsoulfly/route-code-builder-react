@@ -18,6 +18,12 @@ body {
   line-height: 1.5;
   font-weight: 400;
 
+  --alert-clr  : #ff3300;
+  --success-clr: #00ff88;
+  --warning-clr: #fff700;
+  --info-clr   : #008cff;
+
+
   color-scheme    : light dark;
   color           : rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -179,10 +185,37 @@ ul li {
   font-size     : 1.5rem;
   font-weight   : bold;
   background    : #0d1117;
-  color         : #00ff88;
+  color         : var(--success-clr);
   padding       : 0.75rem 1rem;
-  border        : 2px solid #00ff88;
+  border        : 2px solid var(--success-clr);
   border-radius : 8px;
   text-align    : center;
   letter-spacing: 1px;
+}
+
+.red {
+  color : var(--alert-clr);
+  border: 2px solid var(--alert-clr);
+}
+
+.green {
+  color : var(--success-clr);
+  border: 2px solid var(--success-clr);
+}
+
+.yellow {
+  color : var(--warning-clr);
+  border: 2px solid var(--warning-clr);
+}
+
+.blue {
+  color : var(--info-clr);
+  border: 2px solid var(--info-clr);
+}
+
+select:focus,
+input:focus {
+  outline     : none;
+  border-color: var(--info-clr);
+  box-shadow  : 0 0 6px var(--info-clr);
 }
