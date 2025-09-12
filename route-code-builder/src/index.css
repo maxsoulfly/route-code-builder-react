@@ -208,6 +208,11 @@ ul li {
   border: 2px solid var(--warning-clr);
 }
 
+.warning {
+  color: var(--warning-clr);
+}
+
+
 .blue {
   color : var(--info-clr);
   border: 2px solid var(--info-clr);

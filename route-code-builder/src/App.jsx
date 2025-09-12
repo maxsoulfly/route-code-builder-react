@@ -4,6 +4,43 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import { MODES, CLIMATES, CARGO_BY_CLIMATE, STATIONS } from "./data/dictionaries";
 
+function suggestCode(name) {
+  if (!name) return "";
+
+  // Remove leading/trailing spaces and normalize
+  const clean = name.trim();
+
+  // If contains numbers
+  const numberMatch = clean.match(/\d+/);
+  if (numberMatch) {
+    const letters = clean.replace(/[^a-zA-Z]/g, "").slice(0, 2).toUpperCase();
+    return letters + numberMatch[0];
+  }
+
+  // Split into words
+  const words = clean.split(/\s+/);
+
+  if (words.length === 1) {
+    // Single word → first 2 letters
+    return words[0].slice(0, 2).toUpperCase();
+  }
+
+  if (words.length === 2) {
+    // Two words → first 1 letter of first + 1 of second
+    return (
+      words[0].slice(0, 1).toUpperCase() +
+      words[1].slice(0, 1).toUpperCase()
+    );
+  }
+
+  // 3+ words → first 1 letters of first + 1 of second + 1 of last
+  return (
+    words[0].slice(0, 1).toUpperCase() +
+    words[1].slice(0, 1).toUpperCase() +
+    words[words.length - 1][0].toUpperCase()
+  );
+}
+
 
 function App() {
   const [mode, setMode] = useState("GT");
@@ -19,6 +56,31 @@ function App() {
 
   const [newStationCode, setNewStationCode] = useState("");
   const [newStationLabel, setNewStationLabel] = useState("");
+  const [newStationWarning, setNewStationWarning] = useState("");
+
+  function handleAddStation() {
+    if (!newStationCode || !newStationLabel) {
+      setNewStationWarning("Both code and label are required.");
+      return;
+    }
+
+    if (newStationCode.length < 2) {
+      setNewStationWarning("Station code must be at least 2 characters.");
+      return;
+    }
+
+    if (stations.some(([c]) => c.toUpperCase() === newStationCode.toUpperCase())) {
+      setNewStationWarning("Station code already exists.");
+      return;
+    }
+
+    // ✅ Passed all checks → add station
+    setStations([...stations, [newStationCode, newStationLabel]]);
+    setNewStationCode("");
+    setNewStationLabel("");
+
+    setNewStationWarning("");
+  }
 
   // Load stations from localStorage once on app start
   useEffect(() => {
@@ -137,27 +199,31 @@ function App() {
               <input
                 placeholder="Label"
                 value={newStationLabel}
-                onChange={(e) => setNewStationLabel(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setNewStationLabel(value);
+                  setNewStationCode(suggestCode(value));
+                }}
               />
               <button
                 type="button"
                 className="btn"
-                onClick={() => {
-                  if (newStationCode && newStationLabel) {
-                    setStations([...stations, [newStationCode, newStationLabel]]);
-                    setNewStationCode("");
-                    setNewStationLabel("");
-                  }
-                }}
+                onClick={handleAddStation}
               >
                 Add Station
               </button>
+            </div>
+            
+            <div className='stack'>
+              {newStationWarning && (
+                <p className="warnings-output warning">{newStationWarning}</p>
+              )}
             </div>
 
             <ul className="stack">
               {stations.map(([code, label]) => (
                 <li key={code} className="row">
-                  <span>{label}</span>
+                  <span>{code} - {label}</span>
                   <button
                     type="button"
                     className="btn"
