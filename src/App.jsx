@@ -5,6 +5,7 @@ import './App.css'
 import { MODES, CLIMATES, CARGO_BY_CLIMATE, STATIONS } from "./data/dictionaries";
 import AddStation from "./components/AddStation";
 import StationList from "./components/StationList";
+import StationNameGen from "./components/StationNameGen";
 import Inputs from './components/Inputs';
 import Output from './components/Output';
 
@@ -40,7 +41,7 @@ function App() {
   return (
     <>
       <main className="stack" style={{ padding: '1rem', maxWidth: 800, margin: '0 auto' }}>
-        <h1>Route Code Builder</h1>
+        <h1>Route Code Generator</h1>
 
         
         <Output
@@ -54,6 +55,8 @@ function App() {
         />
 
         <AddStation onAddStation={(station) => setStations([...stations, station])} />
+
+        <StationNameGen climate={climate}/>
 
         <StationList stations={stations} onRemoveStation={(code) => setStations(stations.filter(([c]) => c !== code))}/>
 

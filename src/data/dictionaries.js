@@ -74,3 +74,40 @@ export const STATIONS = [
     ["NP", "Nova Prospekt"],
     ["SV", "Sevastopol"],
 ];
+
+export const STATION_SUFFIXES = {
+    PASS: ["Central", "Terminal", "Sector", "Hub", "Colony"],
+    MAIL: ["Relay", "Courier", "Dispatch", "Post", "Comms"],
+    COAL: ["Mine", "Pit", "Shaft", "Dustworks", "Extractor"],
+    OIL: ["Refinery", "Rig", "Well", "Pipeline", "Reservoir"],
+    GOODS: ["Depot", "Bazaar", "Market", "Complex", "Vault"],
+    GRAIN: ["Farm", "Granary", "Field", "Mill", "Silo"],
+    LIVEST: ["Pastures", "Ranch", "Pens", "Stables", "Feedlot"],
+    WOOD: ["Lumberyard", "Mill", "Logging Camp", "Forestry", "Timberworks"],
+    ORE: ["Mine", "Quarry", "Excavation", "Loadout", "Foundry"],
+    STEEL: ["Forge", "Foundry", "Works", "Smelter", "Mill"],
+    VAL: ["Vault", "Safehouse", "Reserve", "Stronghold", "Treasury"],
+
+    FOOD: ["Farm", "Harvest", "Granary", "Canteen", "Processing Plant"],
+    PAPER: ["Mill", "Printing Works", "Depot", "Press", "Stacks"],
+    GOLD: ["Vault", "Reserve", "Mint", "Stronghold", "Treasury"],
+    WHEAT: ["Farm", "Silos", "Fields", "Granary", "Mill"],
+
+    COPPR: ["Mine", "Quarry", "Refinery", "Smelter", "Works"],
+    DIAMD: ["Mine", "Vault", "Excavation", "Reserve", "Shardworks"],
+    FRUIT: ["Orchard", "Market", "Grove", "Harvester", "Stall"],
+    MAIZE: ["Farm", "Silo", "Field", "Processing Plant", "Depot"],
+    RUBB: ["Plantation", "Processing", "Works", "Factory", "Press"],
+    WATR: ["Reservoir", "Pump", "Treatment", "Towers", "Supply"],
+
+    BATT: ["Factory", "Depot", "Plant", "Station", "Terminal"],
+    BUBB: ["Vat", "Tank", "Factory", "Reservoir", "Works"],
+    CNDY: ["Factory", "Depot", "Plant", "Works", "Mill"],
+    COLA: ["Bottling Plant", "Depot", "Factory", "Reservoir", "Works"],
+    FIZZ: ["Vat", "Plant", "Factory", "Depot", "Station"],
+    PLST: ["Factory", "Works", "Depot", "Complex", "Processing"],
+    SUGR: ["Mill", "Processing", "Depot", "Plant", "Stacks"],
+    SWTS: ["Factory", "Depot", "Shop", "Works", "Bazaar"],
+    TOFF: ["Factory", "Depot", "Plant", "Works", "Press"],
+    TOYS: ["Workshop", "Depot", "Store", "Plant", "Factory"],
+};
