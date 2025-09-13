@@ -36,6 +36,11 @@ GT-RZV32>SLG-PASS-01
 - Responsive layout polish  
 - Deployment on GitHub Pages, Netlify, or Vercel  
 
+## 🔗 Live Demo
+You can try the app here:  
+[https://maxsoulfly.github.io/route-code-builder-react/](https://maxsoulfly.github.io/route-code-builder-react/)
+
+
 ## 📦 Getting Started
 Clone the repo and install dependencies:
 ```bash
