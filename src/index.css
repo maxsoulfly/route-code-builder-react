@@ -126,6 +126,7 @@ button:focus-visible {
   display       : flex;
   flex-direction: column;
   gap           : 1rem;
+  margin-top    : 2rem;
 }
 
 /* Give sections space */
