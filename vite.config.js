@@ -1,9 +1,9 @@
 // vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  base: '/route-code-builder-react/',  // 👈 add this line
-})
+    plugins: [react()],
+    base: "/", // 👈 add this line
+});
