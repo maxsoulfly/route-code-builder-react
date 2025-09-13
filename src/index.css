@@ -1,42 +1,46 @@
 * {
-  margin    : 0;
-  padding   : 0;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 html,
 body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif;
   line-height: 1.5;
-  background : #0f1115;
-  color      : #e7eaf0;
+  background: #0f1115;
+  color: #e7eaf0;
 }
-
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  --alert-clr  : #ff3300;
+  --alert-clr: #ff3300;
   --success-clr: #00ff88;
   --warning-clr: #fff700;
-  --info-clr   : #008cff;
+  --info-clr: #008cff;
 
-
-  color-scheme    : light dark;
-  color           : rgba(255, 255, 255, 0.87);
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
-  font-synthesis         : none;
-  text-rendering         : optimizeLegibility;
-  -webkit-font-smoothing : antialiased;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-  font-weight    : 500;
-  color          : #646cff;
+  font-weight: 500;
+  color: #646cff;
   text-decoration: inherit;
 }
 
@@ -45,28 +49,28 @@ a:hover {
 }
 
 body {
-  margin     : 0;
-  display    : flex;
+  margin: 0;
+  display: flex;
   place-items: center;
-  min-width  : 320px;
-  min-height : 100vh;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
 h1 {
-  font-size  : 3.2em;
+  font-size: 3.2em;
   line-height: 1.1;
 }
 
 button {
-  border-radius   : 8px;
-  border          : 1px solid transparent;
-  padding         : 0.6em 1.2em;
-  font-size       : 1em;
-  font-weight     : 500;
-  font-family     : inherit;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
   background-color: #1a1a1a;
-  cursor          : pointer;
-  transition      : border-color 0.25s;
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
 
 button:hover {
@@ -80,7 +84,7 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color           : #213547;
+    color: #213547;
     background-color: #ffffff;
   }
 
@@ -94,28 +98,27 @@ button:focus-visible {
 }
 
 .row {
-  display    : flex;
-  gap        : 1rem;
+  display: flex;
+  gap: 1rem;
   align-items: flex-start;
-  flex-wrap  : wrap;
+  flex-wrap: wrap;
   /* allows wrapping on small screens */
 }
 
-.row>* {
-  flex     : 1;
+.row > * {
+  flex: 1;
   /* each child takes equal width */
   min-width: 200px;
   /* don’t let them shrink too small */
 }
 
-
 .btn {
-  padding      : 0.4rem 0.8rem;
-  border       : 1px solid #444;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #444;
   border-radius: 4px;
-  background   : #1a1d22;
-  color        : inherit;
-  cursor       : pointer;
+  background: #1a1d22;
+  color: inherit;
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -123,89 +126,89 @@ button:focus-visible {
 }
 
 .stack {
-  display       : flex;
+  display: flex;
   flex-direction: column;
-  gap           : 1rem;
-  margin-top    : 2rem;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 /* Give sections space */
 section {
-  margin-top   : 2rem;
-  padding      : 1rem;
-  background   : #16181d;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #16181d;
   border-radius: 8px;
 }
 
 /* Headings hierarchy */
 h1 {
-  font-size    : 1.8rem;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
 }
 
 h2 {
-  font-size    : 1.2rem;
-  margin-top   : 1rem;
+  font-size: 1.2rem;
+  margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
 /* Labels stack neatly */
 label {
-  display       : flex;
+  display: flex;
   flex-direction: column;
-  gap           : 0.25rem;
-  font-weight   : 500;
+  gap: 0.25rem;
+  font-weight: 500;
 }
 
 /* Inputs/selects look consistent */
 input,
 select {
-  padding      : 0.4rem;
-  border       : 1px solid #444;
+  padding: 0.4rem;
+  border: 1px solid #444;
   border-radius: 4px;
-  background   : #1a1d22;
-  color        : #e7eaf0;
+  background: #1a1d22;
+  color: #e7eaf0;
 }
 
 /* Station list nicer */
 ul {
   list-style: none;
-  padding   : 0;
-  margin    : 0.5rem 0;
+  padding: 0;
+  margin: 0.5rem 0;
 }
 
 ul li {
-  display        : flex;
+  display: flex;
   justify-content: space-between;
-  align-items    : center;
-  margin-bottom  : 0.25rem;
+  align-items: center;
+  margin-bottom: 0.25rem;
 }
 
 .code-output {
-  font-family   : monospace;
-  font-size     : 1.5rem;
-  font-weight   : bold;
-  background    : #0d1117;
-  color         : var(--success-clr);
-  padding       : 0.75rem 1rem;
-  border        : 2px solid var(--success-clr);
-  border-radius : 8px;
-  text-align    : center;
+  font-family: monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: #0d1117;
+  color: var(--success-clr);
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--success-clr);
+  border-radius: 8px;
+  text-align: center;
   letter-spacing: 1px;
 }
 
 .red {
-  color : var(--alert-clr);
+  color: var(--alert-clr);
   border: 2px solid var(--alert-clr);
 }
 
 .green {
-  color : var(--success-clr);
+  color: var(--success-clr);
   border: 2px solid var(--success-clr);
 }
 
 .yellow {
-  color : var(--warning-clr);
+  color: var(--warning-clr);
   border: 2px solid var(--warning-clr);
 }
 
@@ -213,15 +216,14 @@ ul li {
   color: var(--warning-clr);
 }
 
-
 .blue {
-  color : var(--info-clr);
+  color: var(--info-clr);
   border: 2px solid var(--info-clr);
 }
 
 select:focus,
 input:focus {
-  outline     : none;
+  outline: none;
   border-color: var(--info-clr);
-  box-shadow  : 0 0 6px var(--info-clr);
+  box-shadow: 0 0 6px var(--info-clr);
 }
