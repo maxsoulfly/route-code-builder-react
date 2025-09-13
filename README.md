@@ -1,12 +1,51 @@
-# React + Vite
+# Route Code Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚦 **Route Code Builder** is a small React app that generates clean, consistent route codes for transport simulation games like **OpenTTD**, **Transport Fever 1 & 2**, the upcoming **Transport Fever 3**, and similar titles.  
 
-Currently, two official plugins are available:
+## 🎯 Purpose
+When managing dozens (or hundreds) of lines in transport games, names like *“Line 12”* or *“Bus Route A”* quickly become messy.  
+This app provides a **structured naming system** so every route code contains useful information:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+MODE-ORIGIN>DEST-CARGO-NN
 
-## Expanding the ESLint configuration
+Example:  
+GT-RZV32>SLG-PASS-01
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `GT` → Ground Transit  
+- `RZV32` → Origin Station  
+- `SLG` → Destination Station  
+- `PASS` → Cargo type (Passengers)  
+- `01` → Route number  
+
+## ✨ Features
+- **Line name generator** → instantly build consistent route codes  
+- **Station manager** → add/remove your custom stations with persistence (saved in localStorage)  
+- **Auto-suggest station codes** → based on station names  
+- **Validation** → avoid duplicates and invalid codes  
+- **Copy-to-clipboard** → one-click to paste into your game  
+- Modular React components (`Inputs`, `Output`, `AddStation`, `StationList`) for clean structure  
+
+## 🛠 Tech Stack
+- **React + Vite** → fast, modern frontend  
+- **LocalStorage** → persistence without a backend  
+- **Plain CSS** → lightweight styling  
+
+## 🚀 Roadmap
+- More validation rules  
+- Optional custom cargo manager  
+- Responsive layout polish  
+- Deployment on GitHub Pages, Netlify, or Vercel  
+
+## 📦 Getting Started
+Clone the repo and install dependencies:
+```bash
+git clone https://github.com/maxsoulfly/route-code-builder-react.git
+cd route-code-builder-react
+npm install
+npm run dev
+
+Open http://localhost:5173
+
+👉 This is copy-ready. You can drop it straight into your repo.  
+
+Want me to add a **“How to Use” section** (with steps like *1. Add stations → 2. Pick mode/cargo → 3. Copy code*) so it’s beginner-friendly?
