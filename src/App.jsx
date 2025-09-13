@@ -54,10 +54,10 @@ function App() {
           handlers={{setMode,setClimate,setOrigin,setDestination,setCargo,setRouteNumber}}
         />
 
-        <AddStation onAddStation={(station) => setStations([...stations, station])} />
-
         <StationNameGen climate={climate}/>
 
+        <AddStation onAddStation={(station) => setStations([...stations, station])} />
+          
         <StationList stations={stations} onRemoveStation={(code) => setStations(stations.filter(([c]) => c !== code))}/>
 
       </main>

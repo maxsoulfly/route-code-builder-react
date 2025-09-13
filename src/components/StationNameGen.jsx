@@ -4,6 +4,7 @@ import { MODES, CLIMATES, CARGO_BY_CLIMATE, STATION_SUFFIXES } from "../data/dic
 function StationNameGen({ climate}) {
   const [cityName, setCityName] = useState("");
   const [cargo, setCargo] = useState("PASS");
+  const [isOpen, setIsOpen] = useState(false);
   const suffixes = STATION_SUFFIXES[cargo] || [];
 
   
@@ -12,52 +13,59 @@ function StationNameGen({ climate}) {
     <section>
           
           <div className="stack">
-            <h2>Station Names Generator</h2>
+            <h2 onClick={() => setIsOpen(!isOpen)} style={{ cursor: "pointer" }}>
+              Station Names Generator {isOpen ? "▲" : "▼"}
+            </h2>
 
-              <input
-                placeholder="City Name"
-                value={cityName}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  setCityName(value);
-                }}
-              />
-              
-              <label>
-                Cargo
-                <select className="field blue" value={cargo} onChange={(e) => setCargo(e.target.value)}>
-                  {CARGO_BY_CLIMATE[climate].map(([code, label]) => (
-                    <option key={code} value={code}>
-                      {label}
-                    </option>
-                  ))}
-                </select>
-              </label>
+            {isOpen && (
+              <div>
+                <input
+                  placeholder="City Name"
+                  value={cityName}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    setCityName(value);
+                  }}
+                />
+                
+                <label>
+                  Cargo
+                  <select className="field blue" value={cargo} onChange={(e) => setCargo(e.target.value)}>
+                    {CARGO_BY_CLIMATE[climate].map(([code, label]) => (
+                      <option key={code} value={code}>
+                        {label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
 
-            <ul className="stack">
-            {suffixes.slice(0, 5).map((suffix, i) => {
-              let name = cityName ? `${cityName} ${suffix}` : suffix;
+                <ul className="stack">
+                {suffixes.slice(0, 5).map((suffix, i) => {
+                  let name = cityName ? `${cityName} ${suffix}` : suffix;
 
-              // 1 in 20 chance to add a random number
-              if (Math.random() < 1 / 20) {
-                const num = Math.floor(Math.random() * 100);
-                name += `-${num}`;
-              }
+                  // 1 in 20 chance to add a random number
+                  if (Math.random() < 1 / 20) {
+                    const num = Math.floor(Math.random() * 100);
+                    name += `-${num}`;
+                  }
 
-              return (
-                <li key={i} className="row">
-                  <span>{name}</span>
-                   <button
-                      type="button"
-                      className="btn"
-                      onClick={() => navigator.clipboard.writeText(`${name}`)}
-                    >
-                      Copy
-                    </button>
-                </li>
-              );
-            })}
-          </ul>
+                  return (
+                    <li key={i} className="row">
+                      <span>{name}</span>
+                      <button
+                          type="button"
+                          className="btn"
+                          onClick={() => navigator.clipboard.writeText(`${name}`)}
+                        >
+                          Copy
+                        </button>
+                    </li>
+                  );
+                  })}
+                </ul>
+              </div>
+            )}
+            
 
           </div>
         </section>
