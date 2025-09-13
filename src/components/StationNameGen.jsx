@@ -61,10 +61,10 @@ function StationNameGen({ climate}) {
                 {getRandomSuffixes(suffixes, 5).map((suffix, i) => {
                   let name = cityName ? `${cityName} ${suffix}` : suffix;
 
-                  // 1 in 20 chance to add a random number
+                  // 1 in 3 chance to add a random number
                   if (Math.random() < 1 / 3) {
                     const num = Math.floor(Math.random() * 100);
-                    name += `-${num}`;
+                    name += `-${String(num).padStart(2, "0")}`;
                   }
 
                   return (
