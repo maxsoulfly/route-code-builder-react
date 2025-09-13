@@ -43,7 +43,6 @@ function App() {
         <h1>Route Code Builder</h1>
 
         
-
         <Output
           values={{ mode, origin, destination, cargo, routeNumber }}
         />
@@ -51,14 +50,7 @@ function App() {
         <Inputs
           stations={stations}
           values={{ mode, climate, origin, destination, cargo, routeNumber }}
-          handlers={{
-            setMode,
-            setClimate,
-            setOrigin,
-            setDestination,
-            setCargo,
-            setRouteNumber
-          }}
+          handlers={{setMode,setClimate,setOrigin,setDestination,setCargo,setRouteNumber}}
         />
 
         <AddStation onAddStation={(station) => setStations([...stations, station])} />

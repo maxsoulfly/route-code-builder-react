@@ -3,7 +3,9 @@ function StationList({ stations, onRemoveStation }) {
     
     <section>
       <ul className="stack">
-        {stations.map(([code, label]) => (
+        {stations
+        .sort((a, b) => a[1].localeCompare(b[1]))
+        .map(([code, label]) => (
           <li key={code} className="row">
             <span>{code} - {label}</span>
             <button type="button" className="btn" onClick={() => onRemoveStation(code)}>

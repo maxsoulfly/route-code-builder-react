@@ -48,7 +48,9 @@ function Inputs({ stations, values, handlers}) {
             <div className="row">
               <label>Origin: 
                 <select className="field green" value={origin} onChange={(e) => setOrigin(e.target.value)}>
-                  {stations.map(([code, label]) => (
+                  {stations
+                  .sort((a, b) => a[1].localeCompare(b[1]))
+                  .map(([code, label]) => (
                     <option key={code} value={code}>
                       {label}
                     </option>
@@ -59,7 +61,10 @@ function Inputs({ stations, values, handlers}) {
               <label>
                 Destination:
                 <select className="field red" value={destination} onChange={(e) => setDestination(e.target.value)}>
-                  {stations.filter(([code]) => code !== origin).map(([code, label]) => (
+                  {stations
+                  .sort((a, b) => a[1].localeCompare(b[1]))
+                  .filter(([code]) => code !== origin)
+                  .map(([code, label]) => (
                     <option key={code} value={code}>
                       {label}
                     </option>
