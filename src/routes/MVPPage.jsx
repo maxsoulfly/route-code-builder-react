@@ -21,7 +21,7 @@ function MVPPage() {
   const [origin, setOrigin] = useState(() => stations[0]?.[0] || "");
   const [destination, setDestination] = useState(() => stations[1]?.[0] || "");
   const [climate, setClimate] = useState("temperate");
-  const [cargo, setCargo] = useState("PASS");
+  const [cargo, setCargo] = useState("PS");
   const [routeNumber, setRouteNumber] = useState("00");
 
   // Load stations from localStorage once on app start

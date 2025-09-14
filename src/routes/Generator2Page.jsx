@@ -23,7 +23,7 @@ function Generator2Page() {
   const [station3, setStation3] = useState({ code: "", label: "" });
 
   const [climate, setClimate] = useState("temperate");
-  const [cargo, setCargo] = useState("PASS");
+  const [cargo, setCargo] = useState("PS");
   const [routeNumber, setRouteNumber] = useState("00");
 
   // Load stations from localStorage once on app start

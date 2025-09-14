@@ -14,57 +14,57 @@ export const CLIMATES = [
 
 export const CARGO_BY_CLIMATE = {
   temperate: [
-    ["PASS", "Passengers"],
-    ["MAIL", "Mail"],
-    ["COAL", "Coal"],
-    ["OIL", "Oil"],
-    ["GOODS", "Goods"],
-    ["GRAIN", "Grain"],
-    ["LIVEST", "Livestock"],
-    ["WOOD", "Wood"],
-    ["ORE", "Iron Ore"],
-    ["STEEL", "Steel"],
-    ["VAL", "Valuables"],
+    ["PS", "Passengers"],
+    ["ML", "Mail"],
+    ["CL", "Coal"],
+    ["OI", "Oil"],
+    ["GD", "Goods"],
+    ["GR", "Grain"],
+    ["LV", "Livestock"],
+    ["WD", "Wood"],
+    ["OR", "Iron Ore"],
+    ["ST", "Steel"],
+    ["VA", "Valuables"],
   ],
   "sub-arctic": [
-    ["FOOD", "Food"],
-    ["PAPER", "Paper"],
-    ["GOLD", "Gold"],
-    ["WHEAT", "Wheat"],
-    ["COAL", "Coal"],
-    ["OIL", "Oil"],
-    ["GOODS", "Goods"],
-    ["WOOD", "Wood"],
-    ["MAIL", "Mail"],
-    ["PASS", "Passengers"],
+    ["FD", "Food"],
+    ["PP", "Paper"],
+    ["GO", "Gold"],
+    ["GR", "Wheat"],
+    ["CL", "Coal"],
+    ["OI", "Oil"],
+    ["GD", "Goods"],
+    ["WD", "Wood"],
+    ["ML", "Mail"],
+    ["PS", "Passengers"],
   ],
   "sub-tropical": [
-    ["COPPR", "Copper Ore"],
-    ["DIAMD", "Diamonds"],
-    ["FRUIT", "Fruit"],
-    ["MAIZE", "Maize"],
-    ["RUBB", "Rubber"],
-    ["WATR", "Water"],
-    ["WOOD", "Wood (Lumber Mill)"],
-    ["FOOD", "Food"],
-    ["GOODS", "Goods"],
-    ["OIL", "Oil"],
-    ["MAIL", "Mail"],
-    ["PASS", "Passengers"],
+    ["CU", "Copper Ore"],
+    ["DI", "Diamonds"],
+    ["FR", "Fruit"],
+    ["MZ", "Maize"],
+    ["RB", "Rubber"],
+    ["WA", "Water"],
+    ["WD", "Wood (Lumber Mill)"],
+    ["FD", "Food"],
+    ["GD", "Goods"],
+    ["OI", "Oil"],
+    ["ML", "Mail"],
+    ["PS", "Passengers"],
   ],
   toyland: [
-    ["BATT", "Batteries"],
-    ["BUBB", "Bubbles"],
-    ["CNDY", "Candyfloss"],
-    ["COLA", "Cola"],
-    ["FIZZ", "Fizzy Drinks"],
-    ["PLST", "Plastic"],
-    ["SUGR", "Sugar"],
-    ["SWTS", "Sweets"],
-    ["TOFF", "Toffee"],
-    ["TOYS", "Toys"],
-    ["MAIL", "Mail"],
-    ["PASS", "Passengers"],
+    ["BA", "Batteries"],
+    ["BU", "Bubbles"],
+    ["CF", "Candyfloss"],
+    ["CC", "Cola"],
+    ["FZ", "Fizzy Drinks"],
+    ["PL", "Plastic"],
+    ["SG", "Sugar"],
+    ["SW", "Sweets"],
+    ["TF", "Toffee"],
+    ["TY", "Toys"],
+    ["ML", "Mail"],
+    ["PS", "Passengers"],
   ],
 };
 
@@ -75,7 +75,7 @@ export const STATIONS = [
   ["SV", "Sevastopol"],
 ];
 export const STATION_SUFFIXES = {
-  PASS: [
+  PS: [
     "Central",
     "Terminal",
     "Sector",
@@ -97,7 +97,7 @@ export const STATION_SUFFIXES = {
     "Hallway",
     "Ascent",
   ],
-  MAIL: [
+  ML: [
     "Relay",
     "Courier",
     "Dispatch",
@@ -119,7 +119,7 @@ export const STATION_SUFFIXES = {
     "Pouch",
     "Depot",
   ],
-  COAL: [
+  CL: [
     "Mine",
     "Pit",
     "Shaft",
@@ -141,7 +141,7 @@ export const STATION_SUFFIXES = {
     "Cutter",
     "Basin",
   ],
-  OIL: [
+  OI: [
     "Refinery",
     "Rig",
     "Well",
@@ -163,7 +163,7 @@ export const STATION_SUFFIXES = {
     "Crude",
     "Basin",
   ],
-  GOODS: [
+  GD: [
     "Depot",
     "Bazaar",
     "Market",
@@ -185,7 +185,7 @@ export const STATION_SUFFIXES = {
     "Stockade",
     "Dock",
   ],
-  GRAIN: [
+  GR: [
     "Farm",
     "Granary",
     "Field",
@@ -207,7 +207,7 @@ export const STATION_SUFFIXES = {
     "Patch",
     "Spread",
   ],
-  LIVEST: [
+  LV: [
     "Pastures",
     "Ranch",
     "Pens",
@@ -229,7 +229,7 @@ export const STATION_SUFFIXES = {
     "Paddock",
     "Pit",
   ],
-  WOOD: [
+  WD: [
     "Lumberyard",
     "Mill",
     "Logging Camp",
@@ -251,7 +251,7 @@ export const STATION_SUFFIXES = {
     "Timberline",
     "Shack",
   ],
-  ORE: [
+  OR: [
     "Mine",
     "Quarry",
     "Excavation",
@@ -273,7 +273,7 @@ export const STATION_SUFFIXES = {
     "Pithead",
     "Spoil",
   ],
-  STEEL: [
+  ST: [
     "Forge",
     "Foundry",
     "Works",
@@ -295,7 +295,7 @@ export const STATION_SUFFIXES = {
     "Rail",
     "Beam",
   ],
-  VAL: [
+  VA: [
     "Vault",
     "Safehouse",
     "Reserve",
@@ -317,7 +317,7 @@ export const STATION_SUFFIXES = {
     "Coffer",
     "Store",
   ],
-  FOOD: [
+  FD: [
     "Farm",
     "Harvest",
     "Granary",
@@ -339,7 +339,7 @@ export const STATION_SUFFIXES = {
     "Grove",
     "Yard",
   ],
-  PAPER: [
+  PP: [
     "Mill",
     "Printing",
     "Depot",
@@ -361,7 +361,7 @@ export const STATION_SUFFIXES = {
     "Stack",
     "Pressroom",
   ],
-  GOLD: [
+  GO: [
     "Vault",
     "Reserve",
     "Mint",
@@ -383,29 +383,7 @@ export const STATION_SUFFIXES = {
     "Citadel",
     "Reservehouse",
   ],
-  WHEAT: [
-    "Farm",
-    "Silos",
-    "Fields",
-    "Granary",
-    "Mill",
-    "Patch",
-    "Barn",
-    "Harvest",
-    "Thresh",
-    "Yard",
-    "Crop",
-    "Kernel",
-    "Acre",
-    "Store",
-    "Stack",
-    "Stock",
-    "Depot",
-    "Plant",
-    "Fieldhouse",
-    "Bin",
-  ],
-  COPPR: [
+  CU: [
     "Mine",
     "Quarry",
     "Refinery",
@@ -427,7 +405,7 @@ export const STATION_SUFFIXES = {
     "Claim",
     "Spoil",
   ],
-  DIAMD: [
+  DI: [
     "Mine",
     "Vault",
     "Excavation",
@@ -449,7 +427,7 @@ export const STATION_SUFFIXES = {
     "Store",
     "Cache",
   ],
-  FRUIT: [
+  FR: [
     "Orchard",
     "Market",
     "Grove",
@@ -471,7 +449,7 @@ export const STATION_SUFFIXES = {
     "Reserve",
     "Supply",
   ],
-  MAIZE: [
+  MZ: [
     "Farm",
     "Silo",
     "Field",
@@ -493,7 +471,7 @@ export const STATION_SUFFIXES = {
     "Bin",
     "Granary",
   ],
-  RUBB: [
+  RB: [
     "Plantation",
     "Processing",
     "Works",
@@ -515,7 +493,7 @@ export const STATION_SUFFIXES = {
     "Block",
     "Forge",
   ],
-  WATR: [
+  WA: [
     "Reservoir",
     "Pump",
     "Treatment",
@@ -537,7 +515,7 @@ export const STATION_SUFFIXES = {
     "Reserve",
     "Plant",
   ],
-  BATT: [
+  BA: [
     "Factory",
     "Depot",
     "Plant",
@@ -559,7 +537,7 @@ export const STATION_SUFFIXES = {
     "Tower",
     "Unit",
   ],
-  BUBB: [
+  BU: [
     "Vat",
     "Tank",
     "Factory",
@@ -581,7 +559,7 @@ export const STATION_SUFFIXES = {
     "Processing",
     "Yard",
   ],
-  CNDY: [
+  CF: [
     "Factory",
     "Depot",
     "Plant",
@@ -603,7 +581,7 @@ export const STATION_SUFFIXES = {
     "Unit",
     "Processing",
   ],
-  COLA: [
+  CC: [
     "Bottling",
     "Depot",
     "Factory",
@@ -625,7 +603,7 @@ export const STATION_SUFFIXES = {
     "Outlet",
     "Unit",
   ],
-  FIZZ: [
+  FZ: [
     "Vat",
     "Plant",
     "Factory",
@@ -647,7 +625,7 @@ export const STATION_SUFFIXES = {
     "Cistern",
     "Outlet",
   ],
-  PLST: [
+  PL: [
     "Factory",
     "Works",
     "Depot",
@@ -669,7 +647,7 @@ export const STATION_SUFFIXES = {
     "Station",
     "Drum",
   ],
-  SUGR: [
+  SG: [
     "Mill",
     "Processing",
     "Depot",
@@ -691,7 +669,7 @@ export const STATION_SUFFIXES = {
     "Cell",
     "Core",
   ],
-  SWTS: [
+  SW: [
     "Factory",
     "Depot",
     "Shop",
@@ -713,7 +691,7 @@ export const STATION_SUFFIXES = {
     "Vault",
     "Outlet",
   ],
-  TOFF: [
+  TF: [
     "Factory",
     "Depot",
     "Plant",
@@ -735,7 +713,7 @@ export const STATION_SUFFIXES = {
     "Station",
     "Store",
   ],
-  TOYS: [
+  TY: [
     "Workshop",
     "Depot",
     "Store",
