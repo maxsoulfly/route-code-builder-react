@@ -1,10 +1,15 @@
 function Output2({ values }) {
-  const { mode, origin, destination, cargo, routeNumber } = values;
+  const { station1, station2, station3, cargo, routeNumber } = values;
+
+  const stationsOut = [station1?.code, station2?.code, station3?.code]
+        .filter(Boolean)
+        .join(">");
+        
   return (
     <section>
       <h2>Output</h2>
       <p className="code-output">
-        {mode}-{origin}&gt;{destination}-{cargo}-{routeNumber.padStart(2, "0")}
+        {stationsOut}-{cargo}-{routeNumber.padStart(2, "0")}
       </p>
       <p>
         <button
@@ -12,7 +17,7 @@ function Output2({ values }) {
           className="btn"
           onClick={() =>
             navigator.clipboard.writeText(
-              `${mode}-${origin}>${destination}-${cargo}-${routeNumber.padStart(2, "0")}`
+              `${stationsOut}-${cargo}-${routeNumber.padStart(2, "0")}`
             )
           }
         >

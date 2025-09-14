@@ -18,9 +18,9 @@ function Generator2Page() {
     const saved = localStorage.getItem("stations");
     return saved ? JSON.parse(saved) : STATIONS;
   });
-  const [station1, setStation1] = useState("");
-  const [station2, setStation2] = useState("");
-  const [station3, setStation3] = useState("");
+  const [station1, setStation1] = useState({ code: "", label: "" });
+  const [station2, setStation2] = useState({ code: "", label: "" });
+  const [station3, setStation3] = useState({ code: "", label: "" });
 
   const [climate, setClimate] = useState("temperate");
   const [cargo, setCargo] = useState("PASS");
