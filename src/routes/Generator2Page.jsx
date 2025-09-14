@@ -5,6 +5,7 @@ import {
   CLIMATES,
   CARGO_BY_CLIMATE,
   STATIONS,
+  TAGS
 } from "../data/dictionaries";
 import AddStation from "../components/AddStation";
 import StationList from "../components/StationList";
@@ -13,7 +14,6 @@ import Inputs2 from "../components/Inputs2";
 import Output2 from "../components/Output2";
 
 function Generator2Page() {
-  const [mode, setMode] = useState("GT");
   const [stations, setStations] = useState(() => {
     const saved = localStorage.getItem("stations");
     return saved ? JSON.parse(saved) : STATIONS;
@@ -23,8 +23,9 @@ function Generator2Page() {
   const [station3, setStation3] = useState({ code: "", label: "" });
 
   const [climate, setClimate] = useState("temperate");
-  const [cargo, setCargo] = useState("PS");
-  const [routeNumber, setRouteNumber] = useState("00");
+  const [cargo, setCargo] = useState("");
+  const [tag, setTag] = useState("");
+
 
   // Load stations from localStorage once on app start
   useEffect(() => {
@@ -48,19 +49,18 @@ function Generator2Page() {
       >
         <h1>Route Code Generator 2.0</h1>
 
-        <Output2 values={{ mode, station1, station2, station3, cargo, routeNumber }} />
+        <Output2 values={{ station1, station2, station3, cargo, tag }} />
 
         <Inputs2
           stations={stations}
-          values={{ mode, climate, station1, station2, station3, cargo, routeNumber }}
+          values={{ climate, station1, station2, station3, cargo, tag }}
           handlers={{
-            setMode,
             setClimate,
             setStation1,
             setStation2,
             setStation3,
             setCargo,
-            setRouteNumber,
+            setTag,
           }}
         />
 

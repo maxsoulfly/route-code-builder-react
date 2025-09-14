@@ -11,6 +11,13 @@ export const CLIMATES = [
   ["sub-tropical", "Sub-Tropical"],
   ["toyland", "Toyland"],
 ];
+export const TAGS = [
+  ["", "None"],
+  ["X", "Express"],
+  ["L", "Local"],
+  ["T", "Transfer"],
+  ["D", "Delivery"],
+];
 
 export const CARGO_BY_CLIMATE = {
   temperate: [

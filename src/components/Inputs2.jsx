@@ -1,17 +1,16 @@
 import { useState } from "react";
 
-import { MODES, CLIMATES, CARGO_BY_CLIMATE } from "../data/dictionaries";
+import { TAGS, CLIMATES, CARGO_BY_CLIMATE } from "../data/dictionaries";
 
 function Inputs2({ stations, values, handlers }) {
-  const { mode, climate, station1, station2, station3, cargo, routeNumber } = values;
+  const { climate, station1, station2, station3, cargo, tag } = values;
   const {
-    setMode,
     setClimate,
     setStation1,
     setStation2,
     setStation3,
     setCargo,
-    setRouteNumber,
+    setTag,
   } = handlers;
   const [station1Focused, setStation1Focused] = useState(false);
   const [station2Focused, setStation2Focused] = useState(false);
@@ -51,38 +50,7 @@ function Inputs2({ stations, values, handlers }) {
           </select>
         </label>
 
-        <div className="row">
-          <label>
-            Mode:
-            <select
-              className="field blue"
-              value={mode}
-              onChange={(e) => setMode(e.target.value)}
-            >
-              {MODES.map(([code, label]) => (
-                <option key={code} value={code}>
-                  {label}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <label>
-            Cargo
-            <select
-              className="field blue"
-              value={cargo}
-              onChange={(e) => setCargo(e.target.value)}
-            >
-              {CARGO_BY_CLIMATE[climate].map(([code, label]) => (
-                <option key={code} value={code}>
-                  {label}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-
+        
         <div className="row">
           <label>
             Station 1:
@@ -175,14 +143,39 @@ function Inputs2({ stations, values, handlers }) {
           
         </div>
 
+        <div className="cargo-options">
+          {CARGO_BY_CLIMATE[climate].map(([code, label]) => (
+            <label
+              key={code}
+              className={`cargo-option ${cargo.includes(code) ? "checked" : ""}`}
+            >
+              <input
+                type="checkbox"
+                checked={cargo.includes(code)}
+                onChange={(e) =>
+                  setCargo(
+                    e.target.checked
+                      ? [...cargo, code]
+                      : cargo.filter((c) => c !== code)
+                  )
+                }
+              />
+              {label}
+            </label>
+          ))}
+        </div>
+
+
+
         <label>
-          Route Number{" "}
-          <input
-            value={routeNumber}
-            type="number"
-            onChange={(e) => setRouteNumber(e.target.value)}
-          />
+          Tag
+          <select value={tag} onChange={(e) => setTag(e.target.value)}>
+            {TAGS.map(([code, label]) => (
+              <option key={code} value={code}>{label}</option>
+            ))}
+          </select>
         </label>
+
 
       </div>
     </section>

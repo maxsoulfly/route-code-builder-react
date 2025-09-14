@@ -1,15 +1,21 @@
 function Output2({ values }) {
-  const { station1, station2, station3, cargo, routeNumber } = values;
+  const { station1, station2, station3, cargo, tag } = values;
 
   const stationsOut = [station1?.code, station2?.code, station3?.code]
         .filter(Boolean)
         .join(">");
-        
+  const cargoOut = Array.isArray(cargo) && cargo.length > 0 ? cargo.join("+") : null;
+
+  const output = [
+    stationsOut,
+    cargoOut,                      // only added if not null
+    tag
+  ].filter(Boolean).join("-");
   return (
     <section>
       <h2>Output</h2>
       <p className="code-output">
-        {stationsOut}-{cargo}-{routeNumber.padStart(2, "0")}
+        {output}
       </p>
       <p>
         <button
@@ -17,7 +23,7 @@ function Output2({ values }) {
           className="btn"
           onClick={() =>
             navigator.clipboard.writeText(
-              `${stationsOut}-${cargo}-${routeNumber.padStart(2, "0")}`
+              `${output}`
             )
           }
         >
