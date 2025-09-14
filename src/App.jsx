@@ -20,7 +20,7 @@ function App() {
           <a href="/mvp">Route Code Generator ver 1.0</a>
         </li>
         <li>
-          <a href="/generator">Route Code Generator ver 1.1a</a>
+          <a href="/generator">Route Code Generator ver 2.0</a>
         </li>
       </ul>
     </>
