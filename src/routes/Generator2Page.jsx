@@ -67,6 +67,7 @@ function Generator2Page() {
 
         <AddStation
           onAddStation={(station) => setStations([...stations, station])}
+          stations = {stations}
         />
 
         <StationList

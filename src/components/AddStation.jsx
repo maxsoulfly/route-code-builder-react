@@ -1,10 +1,13 @@
 import { useState } from "react";
 import suggestCode from "../utils/suggestCode"; // optional: or keep inside this file
 
-function AddStation({ onAddStation }) {
+function AddStation({ onAddStation, stations }) {
   const [newStationCode, setNewStationCode] = useState("");
   const [newStationLabel, setNewStationLabel] = useState("");
   const [newStationWarning, setNewStationWarning] = useState("");
+
+  const existingCodes = stations.map(([code]) => code);
+
 
   function handleAddStation() {
     if (!newStationCode || !newStationLabel) {
@@ -41,7 +44,7 @@ function AddStation({ onAddStation }) {
             onChange={(e) => {
               const value = e.target.value;
               setNewStationLabel(value);
-              setNewStationCode(suggestCode(value));
+              setNewStationCode(suggestCode(value, existingCodes));
             }}
           />
           <button type="button" className="btn" onClick={handleAddStation}>

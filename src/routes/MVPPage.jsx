@@ -65,6 +65,7 @@ function MVPPage() {
 
         <AddStation
           onAddStation={(station) => setStations([...stations, station])}
+          stations = {stations}
         />
 
         <StationList
