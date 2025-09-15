@@ -4,11 +4,14 @@ function Output2({ values }) {
   const stationsOut = [station1?.code, station2?.code, station3?.code]
     .filter(Boolean)
     .join(">");
+
+  const codeOut = `[${stationsOut}]`;
+
   const cargoOut =
     Array.isArray(cargo) && cargo.length > 0 ? cargo.join("+") : null;
 
   const output = [
-    stationsOut,
+    codeOut,
     cargoOut, // only added if not null
     tag,
   ]

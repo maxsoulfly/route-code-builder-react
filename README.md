@@ -31,11 +31,11 @@ Example:
 ### 2. Game Mode (Generator) → `/generator`
 
 Format:
-STATION1>STATION2>STATION3-CARGO+...-TAG
+`[STATION1>STATION2>STATION3]-CARGO+...-TAG`
 
 
 Example:  
-`NPN>SV>RZV32-WD+PS-X`
+`[NPN>SV>RZV32]-WD+PS-X`
 
 - `NPN`, `SV`, `RZV32` → up to 3 stations per route  
 - `WD+PS` → multiple cargos (Wood + Passengers)  
