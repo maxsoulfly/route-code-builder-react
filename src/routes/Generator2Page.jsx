@@ -8,7 +8,7 @@ import {
   TAGS
 } from "../data/dictionaries";
 import AddStation from "../components/AddStation";
-import StationList from "../components/StationList";
+import StationList from "../components/StationList2";
 import StationNameGen from "../components/StationNameGen";
 import Inputs2 from "../components/Inputs2";
 import Output2 from "../components/Output2";
