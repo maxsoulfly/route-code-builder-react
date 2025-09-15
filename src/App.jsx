@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 
 import "./App.css";
 
@@ -17,10 +17,10 @@ function App() {
       <h2>Links</h2>
       <ul>
         <li>
-          <a href="/mvp">Route Code Generator ver 1.0</a>
+          <Link to="/mvp">Route Code Generator ver 1.0</Link>
         </li>
         <li>
-          <a href="/generator">Route Code Generator ver 2.0</a>
+          <Link to="/generator">Route Code Generator ver 2.0</Link>
         </li>
       </ul>
     </>
