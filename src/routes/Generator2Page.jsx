@@ -5,7 +5,7 @@ import {
   CLIMATES,
   CARGO_BY_CLIMATE,
   STATIONS,
-  TAGS
+  TAGS,
 } from "../data/dictionaries";
 import AddStation from "../components/AddStation";
 import StationList from "../components/StationList2";
@@ -25,7 +25,6 @@ function Generator2Page() {
   const [climate, setClimate] = useState("temperate");
   const [cargo, setCargo] = useState("");
   const [tag, setTag] = useState("");
-
 
   // Load stations from localStorage once on app start
   useEffect(() => {

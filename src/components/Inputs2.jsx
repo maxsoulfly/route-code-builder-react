@@ -16,18 +16,20 @@ function Inputs2({ stations, values, handlers }) {
   const [station2Focused, setStation2Focused] = useState(false);
   const [station3Focused, setStation3Focused] = useState(false);
 
-
-  const station1Suggestions = stations.filter(([code, label]) =>
-    code.toLowerCase().includes(station1?.code.toLowerCase()) ||
-    label.toLowerCase().includes(station1?.label.toLowerCase())
+  const station1Suggestions = stations.filter(
+    ([code, label]) =>
+      code.toLowerCase().includes(station1?.code.toLowerCase()) ||
+      label.toLowerCase().includes(station1?.label.toLowerCase())
   );
-  const station2Suggestions = stations.filter(([code, label]) =>
-    code.toLowerCase().includes(station2?.code.toLowerCase()) ||
-    label.toLowerCase().includes(station2?.label.toLowerCase())
+  const station2Suggestions = stations.filter(
+    ([code, label]) =>
+      code.toLowerCase().includes(station2?.code.toLowerCase()) ||
+      label.toLowerCase().includes(station2?.label.toLowerCase())
   );
-  const station3Suggestions = stations.filter(([code, label]) =>
-    code.toLowerCase().includes(station3?.code.toLowerCase()) ||
-    label.toLowerCase().includes(station3?.label.toLowerCase())
+  const station3Suggestions = stations.filter(
+    ([code, label]) =>
+      code.toLowerCase().includes(station3?.code.toLowerCase()) ||
+      label.toLowerCase().includes(station3?.label.toLowerCase())
   );
 
   return (
@@ -50,97 +52,117 @@ function Inputs2({ stations, values, handlers }) {
           </select>
         </label>
 
-        
         <div className="row">
           <label>
             Station 1:
-            <input type="text" className="field green"
-              value={station1?.label || ""} 
-              onChange={(e) => setStation1({code:"", label: e.target.value})}
+            <input
+              type="text"
+              className="field green"
+              value={station1?.label || ""}
+              onChange={(e) => setStation1({ code: "", label: e.target.value })}
               onFocus={() => setStation1Focused(true)}
               onBlur={() => setStation1Focused(false)}
             />
-
-              <div className="suggestions-container">
-                {station1Focused && station1 && 
-                !stations.some(([code, label]) =>
-                  label.toLowerCase() === station1.label.toLowerCase() ||
-                  code.toLowerCase() === station1.code.toLowerCase()
+            <div className="suggestions-container">
+              {station1Focused &&
+                station1 &&
+                !stations.some(
+                  ([code, label]) =>
+                    label.toLowerCase() === station1.label.toLowerCase() ||
+                    code.toLowerCase() === station1.code.toLowerCase()
                 ) && (
                   <ul className="suggestions-list">
                     {station1Suggestions
                       .sort((a, b) => a[1].localeCompare(b[1]))
                       .map(([code, label]) => (
-                        <li key={code} 
-                          className="row" 
-                          onMouseDown={() => setStation1({ code, label })}>
-                          <span>{code} - {label}</span>
+                        <li
+                          key={code}
+                          className="row"
+                          onMouseDown={() => setStation1({ code, label })}
+                        >
+                          <span>
+                            {code} - {label}
+                          </span>
                         </li>
                       ))}
                   </ul>
                 )}
-              </div>
+            </div>
           </label>
-          
 
           <label>
             Station 2:
-            <input type="text" className="field yellow"
-              value={station2?.label || ""} 
-              onChange={(e) => setStation2({code:"", label: e.target.value})}
+            <input
+              type="text"
+              className="field yellow"
+              value={station2?.label || ""}
+              onChange={(e) => setStation2({ code: "", label: e.target.value })}
               onFocus={() => setStation2Focused(true)}
               onBlur={() => setStation2Focused(false)}
             />
-
-              
-              <div className="suggestions-container">
-                {station2Focused && station2 && 
-                !stations.some(([code, label]) =>
-                  label.toLowerCase() === station2.label.toLowerCase() ||
-                  code.toLowerCase() === station2.code.toLowerCase()
+            <div className="suggestions-container">
+              {station2Focused &&
+                station2 &&
+                !stations.some(
+                  ([code, label]) =>
+                    label.toLowerCase() === station2.label.toLowerCase() ||
+                    code.toLowerCase() === station2.code.toLowerCase()
                 ) && (
                   <ul className="suggestions-list">
                     {station2Suggestions
                       .sort((a, b) => a[1].localeCompare(b[1]))
                       .map(([code, label]) => (
-                        <li key={code} className="row" onMouseDown={() => setStation2({ code, label })}>
-                          <span>{code} - {label}</span>
+                        <li
+                          key={code}
+                          className="row"
+                          onMouseDown={() => setStation2({ code, label })}
+                        >
+                          <span>
+                            {code} - {label}
+                          </span>
                         </li>
                       ))}
                   </ul>
                 )}
-              </div>
+            </div>
           </label>
 
           <label>
             Station 3:
-            <input type="text" className="field red"
-              value={station3?.label||""} 
-              onChange={(e) => setStation3({code:"", label: e.target.value})}
+            <input
+              type="text"
+              className="field red"
+              value={station3?.label || ""}
+              onChange={(e) => setStation3({ code: "", label: e.target.value })}
               onFocus={() => setStation3Focused(true)}
               onBlur={() => setStation3Focused(false)}
             />
-
-              
-              <div className="suggestions-container">
-                {station3Focused &&station3 && 
-                !stations.some(([code, label]) =>
-                  label.toLowerCase() === station3.label.toLowerCase() ||
-                  code.toLowerCase() === station3.code.toLowerCase()
+            <div className="suggestions-container">
+              {station3Focused &&
+                station3 &&
+                !stations.some(
+                  ([code, label]) =>
+                    label.toLowerCase() === station3.label.toLowerCase() ||
+                    code.toLowerCase() === station3.code.toLowerCase()
                 ) && (
                   <ul className="suggestions-list">
                     {station3Suggestions
                       .sort((a, b) => a[1].localeCompare(b[1]))
                       .map(([code, label]) => (
-                        <li key={code} className="row" onMouseDown={() => setStation3({ code, label })}>
-                          <span>{code} - {label}</span>
+                        <li
+                          key={code}
+                          className="row"
+                          onMouseDown={() => setStation3({ code, label })}
+                        >
+                          <span>
+                            {code} - {label}
+                          </span>
                         </li>
                       ))}
                   </ul>
                 )}
-              </div>
+            </div>
           </label>
-          
         </div>
 
         <div className="cargo-options">
@@ -165,18 +187,16 @@ function Inputs2({ stations, values, handlers }) {
           ))}
         </div>
 
-
-
         <label>
           Tag
           <select value={tag} onChange={(e) => setTag(e.target.value)}>
             {TAGS.map(([code, label]) => (
-              <option key={code} value={code}>{label}</option>
+              <option key={code} value={code}>
+                {label}
+              </option>
             ))}
           </select>
         </label>
-
-
       </div>
     </section>
   );

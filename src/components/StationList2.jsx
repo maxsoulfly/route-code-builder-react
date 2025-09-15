@@ -5,13 +5,12 @@ function StationList({ stations, onRemoveStation }) {
 
   const [filter, setFilter] = useState("");
 
-  const stationSuggestions = stations.filter(([code, label]) =>
-    code.toLowerCase().includes(filter.toLowerCase()) ||
-    label.toLowerCase().includes(filter.toLowerCase())
+  const stationSuggestions = stations.filter(
+    ([code, label]) =>
+      code.toLowerCase().includes(filter.toLowerCase()) ||
+      label.toLowerCase().includes(filter.toLowerCase())
   );
 
-  
-  
   return (
     <section>
       <h2 onClick={() => setIsOpen(!isOpen)} style={{ cursor: "pointer" }}>
@@ -21,7 +20,6 @@ function StationList({ stations, onRemoveStation }) {
       {isOpen && (
         <div>
           <div className="row">
-            
             <label>
               Filter Stations:
               <input
@@ -37,7 +35,9 @@ function StationList({ stations, onRemoveStation }) {
               .sort((a, b) => a[1].localeCompare(b[1]))
               .map(([code, label]) => (
                 <li key={code} className="row">
-                  <span>{code} - {label}</span>
+                  <span>
+                    {code} - {label}
+                  </span>
                   <button
                     type="button"
                     className="btn"
@@ -46,9 +46,7 @@ function StationList({ stations, onRemoveStation }) {
                     Remove
                   </button>
                 </li>
-              ))
-            }
-
+              ))}
           </ul>
         </div>
       )}
