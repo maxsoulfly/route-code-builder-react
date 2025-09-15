@@ -283,3 +283,31 @@ input:focus {
   font-weight : bold;
   color       : var(--info-clr);
 }
+
+
+nav.nav {
+  display: flex;
+  gap    : 1rem;
+  padding: 0.5rem 1rem;
+}
+
+nav.nav a {
+  text-decoration: none;
+  color          : var(--info-clr);
+  border         : 2px solid var(--info-clr);
+  font-weight    : 500;
+
+  border-radius: 8px 8px 0 0;
+  padding      : 0.5rem 1rem;
+}
+
+nav.nav a:hover,
+nav.nav a:active {
+  border-color: var(--info-clr);
+  box-shadow  : 0 0 6px var(--info-clr);
+}
+
+nav.nav a.active {
+  background-color: var(--info-clr);
+  color           : white;
+}
