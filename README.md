@@ -57,12 +57,14 @@ Example:
 
 ## 🚀 How to Use
 
-1. Open either `/mvp` (classic) or `/generator` (game).  
+1. Open either [Classic Mode (MVP)](https://maxsoulfly.github.io/route-code-builder-react/#/mvp)  
+   or [Game Mode (Generator)](https://maxsoulfly.github.io/route-code-builder-react/#/generator).  
 2. **Add stations** in the Station Manager (persisted locally).  
 3. **Choose mode/climate** (classic) or **select stations** (game).  
 4. **Pick cargos** (single in MVP, multiple in Game Mode).  
 5. **Optionally add a suffix tag** (Express, Local, Transfer, Delivery).  
 6. Copy the generated code and paste it into your game.  
+
 
 ---
 
@@ -77,10 +79,11 @@ Example:
 ## 🌍 Live Demo
 
 👉 Try it here:  
-[https://maxsoulfly.github.io/route-code-builder-react/](https://maxsoulfly.github.io/route-code-builder-react/)
+[Main page](https://maxsoulfly.github.io/route-code-builder-react/)
 
-- Classic Mode: `/mvp`  
-- Game Mode: `/generator`
+- [Classic Mode (MVP)](https://maxsoulfly.github.io/route-code-builder-react/#/mvp)  
+- [Game Mode (Generator)](https://maxsoulfly.github.io/route-code-builder-react/#/generator)
+
 
 ---
 
