@@ -16,21 +16,25 @@ function Inputs2({ stations, values, handlers }) {
   const [station2Focused, setStation2Focused] = useState(false);
   const [station3Focused, setStation3Focused] = useState(false);
 
-  const station1Suggestions = stations.filter(
-    ([code, label]) =>
-      code.toLowerCase().includes(station1?.code.toLowerCase()) ||
-      label.toLowerCase().includes(station1?.label.toLowerCase())
-  );
-  const station2Suggestions = stations.filter(
-    ([code, label]) =>
-      code.toLowerCase().includes(station2?.code.toLowerCase()) ||
-      label.toLowerCase().includes(station2?.label.toLowerCase())
-  );
-  const station3Suggestions = stations.filter(
-    ([code, label]) =>
-      code.toLowerCase().includes(station3?.code.toLowerCase()) ||
-      label.toLowerCase().includes(station3?.label.toLowerCase())
-  );
+const station1Suggestions = stations.filter(
+  ([code, label]) => {
+    const query = station1?.label?.toLowerCase() || "";
+    return code.toLowerCase().includes(query) || label.toLowerCase().includes(query);
+  }
+);
+const station2Suggestions = stations.filter(
+  ([code, label]) => {
+    const query = station2?.label?.toLowerCase() || "";
+    return code.toLowerCase().includes(query) || label.toLowerCase().includes(query);
+  }
+);
+const station3Suggestions = stations.filter(
+  ([code, label]) => {
+    const query = station3?.label?.toLowerCase() || "";
+    return code.toLowerCase().includes(query) || label.toLowerCase().includes(query);
+  }
+);
+
 
   return (
     <section>
