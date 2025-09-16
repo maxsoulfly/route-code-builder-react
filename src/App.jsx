@@ -10,12 +10,11 @@ import Nav from "./components/Nav";
 function App() {
   return (
     <>
-      <Nav/>
+      <Nav />
       <Routes>
         <Route path="/mvp" element={<MVPPage />} />
         <Route path="/generator" element={<Generator2Page />} />
       </Routes>
-
     </>
   );
 }

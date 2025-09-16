@@ -141,7 +141,7 @@ section {
 }
 
 section p {
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 /* Headings hierarchy */
@@ -291,7 +291,6 @@ input:focus {
   font-weight : bold;
   color       : var(--info-clr);
 }
-
 
 nav.nav {
   display: flex;

@@ -38,13 +38,11 @@ function Generator2Page() {
     }
   }, []);
 
-
   // Save stations to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem("stations", JSON.stringify(stations));
   }, [stations]);
   // put your useState + useEffect + imports here
-
 
   useEffect(() => {
     localStorage.setItem("climate", JSON.stringify(climate));
@@ -77,7 +75,7 @@ function Generator2Page() {
 
         <AddStation
           onAddStation={(station) => setStations([...stations, station])}
-          stations = {stations}
+          stations={stations}
         />
 
         <StationList

@@ -2,10 +2,7 @@ import { useState } from "react";
 
 import { TAGS, CLIMATES, CARGO_BY_CLIMATE } from "../data/dictionaries";
 
-
-
 function Inputs2({ stations, values, handlers }) {
-  
   const { climate, station1, station2, station3, cargo, tag } = values;
   const {
     setClimate,
@@ -25,30 +22,30 @@ function Inputs2({ stations, values, handlers }) {
     );
 
     if (match) {
-      return { code: match[0], label: match[1] };}
+      return { code: match[0], label: match[1] };
+    }
 
-    return{ code: "", label: label };
+    return { code: "", label: label };
   }
 
-  const station1Suggestions = stations.filter(
-    ([code, label]) => {
-      const query = station1?.label?.toLowerCase() || "";
-      return code.toLowerCase().includes(query) || label.toLowerCase().includes(query);
-    }
-  );
-  const station2Suggestions = stations.filter(
-    ([code, label]) => {
-      const query = station2?.label?.toLowerCase() || "";
-      return code.toLowerCase().includes(query) || label.toLowerCase().includes(query);
-    }
-  );
-  const station3Suggestions = stations.filter(
-    ([code, label]) => {
-      const query = station3?.label?.toLowerCase() || "";
-      return code.toLowerCase().includes(query) || label.toLowerCase().includes(query);
-    }
-);
-
+  const station1Suggestions = stations.filter(([code, label]) => {
+    const query = station1?.label?.toLowerCase() || "";
+    return (
+      code.toLowerCase().includes(query) || label.toLowerCase().includes(query)
+    );
+  });
+  const station2Suggestions = stations.filter(([code, label]) => {
+    const query = station2?.label?.toLowerCase() || "";
+    return (
+      code.toLowerCase().includes(query) || label.toLowerCase().includes(query)
+    );
+  });
+  const station3Suggestions = stations.filter(([code, label]) => {
+    const query = station3?.label?.toLowerCase() || "";
+    return (
+      code.toLowerCase().includes(query) || label.toLowerCase().includes(query)
+    );
+  });
 
   return (
     <section>

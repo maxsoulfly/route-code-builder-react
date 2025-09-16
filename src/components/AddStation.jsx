@@ -8,7 +8,6 @@ function AddStation({ onAddStation, stations }) {
 
   const existingCodes = stations.map(([code]) => code);
 
-
   function handleAddStation() {
     if (!newStationCode || !newStationLabel) {
       setNewStationWarning("Both code and label are required.");
