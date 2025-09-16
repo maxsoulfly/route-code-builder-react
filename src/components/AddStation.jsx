@@ -36,6 +36,11 @@ function AddStation({ onAddStation, stations }) {
             placeholder="Code"
             value={newStationCode}
             onChange={(e) => setNewStationCode(e.target.value.toUpperCase())}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleAddStation();
+              }
+            }}
           />
           <input
             placeholder="Label"
@@ -44,6 +49,11 @@ function AddStation({ onAddStation, stations }) {
               const value = e.target.value;
               setNewStationLabel(value);
               setNewStationCode(suggestCode(value, existingCodes));
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleAddStation();
+              }
             }}
           />
           <button type="button" className="btn" onClick={handleAddStation}>
