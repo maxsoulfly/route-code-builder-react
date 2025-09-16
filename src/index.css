@@ -134,10 +134,14 @@ button:focus-visible {
 
 /* Give sections space */
 section {
-  margin-top   : 2rem;
+  margin-top   : 2rem 0;
   padding      : 1rem;
   background   : #16181d;
   border-radius: 8px;
+}
+
+section p {
+  padding: .5rem;
 }
 
 /* Headings hierarchy */
@@ -200,6 +204,10 @@ ul li {
 .red {
   color : var(--alert-clr);
   border: 2px solid var(--alert-clr);
+}
+
+p.alert {
+  color: var(--alert-clr);
 }
 
 .green {

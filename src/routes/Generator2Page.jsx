@@ -12,6 +12,7 @@ import StationList from "../components/StationList2";
 import StationNameGen from "../components/StationNameGen";
 import Inputs2 from "../components/Inputs2";
 import Output2 from "../components/Output2";
+import Reset from "../components/Reset";
 
 function Generator2Page() {
   const [stations, setStations] = useState(() => {
@@ -85,6 +86,8 @@ function Generator2Page() {
             setStations(stations.filter(([c]) => c !== code))
           }
         />
+
+        <Reset />
       </main>
     </>
   );
