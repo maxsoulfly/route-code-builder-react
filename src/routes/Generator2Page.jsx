@@ -22,7 +22,10 @@ function Generator2Page() {
   const [station2, setStation2] = useState({ code: "", label: "" });
   const [station3, setStation3] = useState({ code: "", label: "" });
 
-  const [climate, setClimate] = useState("temperate");
+  const [climate, setClimate] = useState(() => {
+    const saved = localStorage.getItem("climate");
+    return saved ? JSON.parse(saved) : "temperate";
+  });
   const [cargo, setCargo] = useState("");
   const [tag, setTag] = useState("");
 
@@ -34,11 +37,17 @@ function Generator2Page() {
     }
   }, []);
 
+
   // Save stations to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem("stations", JSON.stringify(stations));
   }, [stations]);
   // put your useState + useEffect + imports here
+
+
+  useEffect(() => {
+    localStorage.setItem("climate", JSON.stringify(climate));
+  }, [climate]);
 
   return (
     <>

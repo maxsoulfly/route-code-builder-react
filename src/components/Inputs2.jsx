@@ -5,6 +5,7 @@ import { TAGS, CLIMATES, CARGO_BY_CLIMATE } from "../data/dictionaries";
 
 
 function Inputs2({ stations, values, handlers }) {
+  
   const { climate, station1, station2, station3, cargo, tag } = values;
   const {
     setClimate,
