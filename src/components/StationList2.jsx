@@ -40,7 +40,14 @@ function StationList({ stations, onRemoveStation }) {
                   </span>
                   <button
                     type="button"
-                    className="btn"
+                    className="btn blue"
+                    onClick={() => navigator.clipboard.writeText(`${label}`)}
+                  >
+                    Copy Label
+                  </button>
+                  <button
+                    type="button"
+                    className="btn red"
                     onClick={() => onRemoveStation(code)}
                   >
                     Remove
