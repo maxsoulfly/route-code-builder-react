@@ -2,13 +2,6 @@ function getFirstChar(word) {
   return word[0] ? word[0].toUpperCase() : "";
 }
 
-function getLetters(str, count = 2) {
-  return str
-    .replace(/[^a-zA-Z]/g, "")
-    .slice(0, count)
-    .toUpperCase();
-}
-
 function isUnique(code, existingCodes) {
   return !existingCodes.includes(code);
 }
@@ -21,36 +14,52 @@ function shouldSkipChar(char, first, last, seen) {
 }
 
 function tryCandidates(words, existingCodes) {
-  const first = getFirstChar(words[0]);
-  const second = getFirstChar(words[1]);
-  const last = getFirstChar(words[words.length - 1]);
-
   const seen = new Set();
 
-  let candidate = "";
-  if (words.length == 2) {
-    candidate = first + last;
-    if (isUnique(candidate, existingCodes)) return candidate;
-  }
+  if (words.length === 1) {
+    const word = words[0];
+    const first = word[0].toUpperCase();
+    const last = word[word.length - 1].toUpperCase();
 
-  candidate = first + second + last;
-  if (isUnique(candidate, existingCodes)) return candidate;
-
-  for (let i = 0; i < words.length - 1; i++) {
-    for (let char of words[i]) {
+    // walk middle characters
+    for (let char of word.slice(1, -1)) {
       if (shouldSkipChar(char, first, last, seen)) continue;
       seen.add(char);
 
       const candidate = first + char.toUpperCase() + last;
       if (isUnique(candidate, existingCodes)) return candidate;
     }
+  } else {
+    const first = getFirstChar(words[0]);
+    const second = getFirstChar(words[1]);
+    const last = getFirstChar(words[words.length - 1]);
 
-    for (let char of words[words.length - 1].slice(1)) {
-      if (shouldSkipChar(char, first, last, seen)) continue;
-      seen.add(char);
-
-      const candidate = first + last + char.toUpperCase(); // Step 4
+    let candidate = "";
+    if (words.length == 2) {
+      candidate = first + last;
       if (isUnique(candidate, existingCodes)) return candidate;
+    }
+    if (words.length > 2) {
+      candidate = first + second + last;
+      if (isUnique(candidate, existingCodes)) return candidate;
+    }
+
+    for (let i = 0; i <= words.length - 1; i++) {
+      for (let char of words[i]) {
+        if (shouldSkipChar(char, first, last, seen)) continue;
+        seen.add(char);
+
+        const candidate = first + char.toUpperCase() + last;
+        if (isUnique(candidate, existingCodes)) return candidate;
+      }
+
+      for (let char of words[words.length - 1].slice(1)) {
+        if (shouldSkipChar(char, first, last, seen)) continue;
+        seen.add(char);
+
+        const candidate = first + last + char.toUpperCase();
+        if (isUnique(candidate, existingCodes)) return candidate;
+      }
     }
   }
 }
@@ -71,15 +80,8 @@ export default function suggestCode(name, existingCodes = []) {
     if (isUnique(base, existingCodes)) return base;
   }
 
-  if (words.length === 1) {
-    base = getLetters(words[0]);
-    if (isUnique(base, existingCodes)) return base;
-  }
-
-  if (words.length > 1) {
-    const candidate = tryCandidates(words, existingCodes);
-    if (isUnique(candidate, existingCodes)) return candidate;
-  }
+  const candidate = tryCandidates(words, existingCodes);
+  if (isUnique(candidate, existingCodes)) return candidate;
 
   const alphabet = "ZYXWVUTSRQPONMLKJIHGFEDCBA1234567890";
   base = first + last;
