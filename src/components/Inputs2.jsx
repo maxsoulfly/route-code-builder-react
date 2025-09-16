@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import { TAGS, CLIMATES, CARGO_BY_CLIMATE } from "../data/dictionaries";
 
+
+
 function Inputs2({ stations, values, handlers }) {
   const { climate, station1, station2, station3, cargo, tag } = values;
   const {
@@ -16,23 +18,34 @@ function Inputs2({ stations, values, handlers }) {
   const [station2Focused, setStation2Focused] = useState(false);
   const [station3Focused, setStation3Focused] = useState(false);
 
-const station1Suggestions = stations.filter(
-  ([code, label]) => {
-    const query = station1?.label?.toLowerCase() || "";
-    return code.toLowerCase().includes(query) || label.toLowerCase().includes(query);
+  function matchCode(label) {
+    const match = stations.find(
+      ([c, l]) => l.toLowerCase() === label.toLowerCase()
+    );
+
+    if (match) {
+      return { code: match[0], label: match[1] };}
+
+    return{ code: "", label: label };
   }
-);
-const station2Suggestions = stations.filter(
-  ([code, label]) => {
-    const query = station2?.label?.toLowerCase() || "";
-    return code.toLowerCase().includes(query) || label.toLowerCase().includes(query);
-  }
-);
-const station3Suggestions = stations.filter(
-  ([code, label]) => {
-    const query = station3?.label?.toLowerCase() || "";
-    return code.toLowerCase().includes(query) || label.toLowerCase().includes(query);
-  }
+
+  const station1Suggestions = stations.filter(
+    ([code, label]) => {
+      const query = station1?.label?.toLowerCase() || "";
+      return code.toLowerCase().includes(query) || label.toLowerCase().includes(query);
+    }
+  );
+  const station2Suggestions = stations.filter(
+    ([code, label]) => {
+      const query = station2?.label?.toLowerCase() || "";
+      return code.toLowerCase().includes(query) || label.toLowerCase().includes(query);
+    }
+  );
+  const station3Suggestions = stations.filter(
+    ([code, label]) => {
+      const query = station3?.label?.toLowerCase() || "";
+      return code.toLowerCase().includes(query) || label.toLowerCase().includes(query);
+    }
 );
 
 
@@ -63,7 +76,7 @@ const station3Suggestions = stations.filter(
               type="text"
               className="field green"
               value={station1?.label || ""}
-              onChange={(e) => setStation1({ code: "", label: e.target.value })}
+              onChange={(e) => setStation1(matchCode(e.target.value))}
               onFocus={() => setStation1Focused(true)}
               onBlur={() => setStation1Focused(false)}
             />
@@ -100,7 +113,7 @@ const station3Suggestions = stations.filter(
               type="text"
               className="field yellow"
               value={station2?.label || ""}
-              onChange={(e) => setStation2({ code: "", label: e.target.value })}
+              onChange={(e) => setStation2(matchCode(e.target.value))}
               onFocus={() => setStation2Focused(true)}
               onBlur={() => setStation2Focused(false)}
             />
@@ -137,7 +150,7 @@ const station3Suggestions = stations.filter(
               type="text"
               className="field red"
               value={station3?.label || ""}
-              onChange={(e) => setStation3({ code: "", label: e.target.value })}
+              onChange={(e) => setStation3(matchCode(e.target.value))}
               onFocus={() => setStation3Focused(true)}
               onBlur={() => setStation3Focused(false)}
             />
