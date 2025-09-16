@@ -20,7 +20,7 @@ function Inputs2({ stations, values, handlers }) {
 
   function matchCode(label) {
     const match = stations.find(
-      ([c, l]) => l.toLowerCase() === label.toLowerCase()
+      (station) => station[1].toLowerCase() === label.toLowerCase()
     );
 
     if (match) {
