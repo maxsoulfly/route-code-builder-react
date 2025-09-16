@@ -35,7 +35,7 @@ function StationList({ stations, onRemoveStation }) {
               .sort((a, b) => a[1].localeCompare(b[1]))
               .map(([code, label]) => (
                 <li key={code} className="row">
-                  <span>
+                  <span className="title">
                     {code} - {label}
                   </span>
                   <button

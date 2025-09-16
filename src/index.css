@@ -100,9 +100,13 @@ button:focus-visible {
 .row {
   display    : flex;
   gap        : 1rem;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap  : wrap;
   /* allows wrapping on small screens */
+}
+
+.row .title {
+  flex: 2;
 }
 
 .row>* {
