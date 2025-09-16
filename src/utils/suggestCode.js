@@ -26,9 +26,12 @@ function tryCandidates(words, existingCodes) {
   const last = getFirstChar(words[words.length - 1]);
 
   const seen = new Set();
-
-  let candidate = first + last;
-  if (isUnique(candidate, existingCodes)) return candidate;
+  
+  let candidate = "";
+  if (words.length == 2) {
+    candidate = first + last;
+    if (isUnique(candidate, existingCodes)) return candidate;
+  }
 
   candidate = first + second + last;
   if (isUnique(candidate, existingCodes)) return candidate;
