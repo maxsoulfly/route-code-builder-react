@@ -52,7 +52,7 @@ export const CARGO_BY_CLIMATE = {
     ["MZ", "Maize"],
     ["RB", "Rubber"],
     ["WA", "Water"],
-    ["WD", "Wood (Lumber Mill)"],
+    ["WD", "Wood"],
     ["FD", "Food"],
     ["GD", "Goods"],
     ["OI", "Oil"],
