@@ -2,7 +2,7 @@ function getFirstChar(word) {
   return word[0] ? word[0].toUpperCase() : "";
 }
 
-function getLetters(str, count) {
+function getLetters(str, count = 2) {
   return str
     .replace(/[^a-zA-Z]/g, "")
     .slice(0, count)
