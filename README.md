@@ -52,6 +52,16 @@ Example:
 - **Optional tag system** → add `X`, `L`, `T`, `D` as suffixes  
 - **Copy-to-clipboard** → one-click to paste into your game  
 - Modular React components for clean structure  
+- **Reset All Data** → If you ever want to start fresh
+---
+
+## ♻️ Resetting Saved Data
+
+Route Code Builder saves your stations and climate settings in your browser’s **localStorage**.  
+If you ever want to start fresh, use the **Reset All Data** button.  
+
+⚠️ Warning: this will permanently delete all saved stations, codes, and settings.  
+Once deleted, the data cannot be recovered.
 
 ---
 
