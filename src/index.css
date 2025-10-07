@@ -130,10 +130,10 @@ button:focus-visible {
 }
 
 .stack {
-  display       : flex;
-  flex-direction: column;
-  gap           : 1rem;
-  margin-top    : 2rem;
+  display          : flex;
+  flex-direction   : column;
+  gap              : 1rem;
+  /* margin-top    : 2rem; */
 }
 
 /* Give sections space */
