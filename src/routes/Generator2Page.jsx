@@ -19,16 +19,40 @@ function Generator2Page() {
     const saved = localStorage.getItem("stations");
     return saved ? JSON.parse(saved) : STATIONS;
   });
-  const [station1, setStation1] = useState({ code: "", label: "" });
-  const [station2, setStation2] = useState({ code: "", label: "" });
-  const [station3, setStation3] = useState({ code: "", label: "" });
+
+  const s1 = localStorage.getItem("gen.station1");
+  const s2 = localStorage.getItem("gen.station2");
+  const s3 = localStorage.getItem("gen.station3");
+  const cg = localStorage.getItem("gen.cargo");
+  const tg = localStorage.getItem("gen.tag");
+
+  const [station1, setStation1] = useState(() =>
+    s1
+      ? JSON.parse(s1)
+      : stations[0]
+        ? { code: stations[0][0], label: stations[0][1] }
+        : { code: "", label: "" }
+  );
+  const [station2, setStation2] = useState(() =>
+    s2
+      ? JSON.parse(s2)
+      : stations[1]
+        ? { code: stations[1][0], label: stations[1][1] }
+        : { code: "", label: "" }
+  );
+
+  const [station3, setStation3] = useState(() =>
+    s3 ? JSON.parse(s3) : { code: "", label: "" }
+  );
 
   const [climate, setClimate] = useState(() => {
     const saved = localStorage.getItem("climate");
     return saved ? JSON.parse(saved) : "temperate";
   });
-  const [cargo, setCargo] = useState("");
-  const [tag, setTag] = useState("");
+  const [cargo, setCargo] = useState(() =>
+    cg ? JSON.parse(cg) : [CARGO_BY_CLIMATE[climate][0][0]]
+  );
+  const [tag, setTag] = useState(() => (tg ? JSON.parse(tg) : ""));
 
   // Load stations from localStorage once on app start
   useEffect(() => {
@@ -47,6 +71,32 @@ function Generator2Page() {
   useEffect(() => {
     localStorage.setItem("climate", JSON.stringify(climate));
   }, [climate]);
+
+  // Load saved selections on mount
+  useEffect(() => {
+    const s1 = localStorage.getItem("gen.station1");
+    const s2 = localStorage.getItem("gen.station2");
+    const s3 = localStorage.getItem("gen.station3");
+    const cg = localStorage.getItem("gen.cargo");
+    const tg = localStorage.getItem("gen.tag");
+
+    // If any exist, hydrate without touching your current defaults otherwise
+    if (s1) setStation1(JSON.parse(s1));
+    if (s2) setStation2(JSON.parse(s2));
+    if (s3) setStation3(JSON.parse(s3));
+    if (cg) setCargo(JSON.parse(cg)); // expects an array
+    if (tg) setTag(JSON.parse(tg));
+  }, []);
+
+  // Save whenever user changes them
+
+  useEffect(() => {
+    localStorage.setItem("gen.station1", JSON.stringify(station1));
+    localStorage.setItem("gen.station2", JSON.stringify(station2));
+    localStorage.setItem("gen.station3", JSON.stringify(station3));
+    localStorage.setItem("gen.cargo", JSON.stringify(cargo)); // array
+    localStorage.setItem("gen.tag", JSON.stringify(tag));
+  }, [station1, station2, station3, cargo, tag]);
 
   return (
     <>
