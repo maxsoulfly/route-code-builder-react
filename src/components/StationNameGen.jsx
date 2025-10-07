@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   MODES,
   CLIMATES,
@@ -14,9 +14,28 @@ function getRandomSuffixes(suffixes, count = 5) {
 function StationNameGen({ climate }) {
   const [cityName, setCityName] = useState("");
   const [cargo, setCargo] = useState("PASS");
-  const [isOpen, setIsOpen] = useState(false);
   const suffixes = STATION_SUFFIXES[cargo] || [];
   const [roll, setRoll] = useState(0);
+
+  const UI_KEY = "ui.stationNameGen.open";
+
+  const safeParseBool = (v, fallback) => {
+    try {
+      const parsed = JSON.parse(v);
+      return typeof parsed === "boolean" ? parsed : fallback;
+    } catch {
+      return fallback;
+    }
+  };
+
+  const [isOpen, setIsOpen] = useState(() => {
+    const saved = localStorage.getItem(UI_KEY);
+    return saved ? safeParseBool(saved, false) : false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(UI_KEY, JSON.stringify(isOpen));
+  }, [isOpen]);
 
   return (
     <section>

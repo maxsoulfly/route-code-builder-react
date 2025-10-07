@@ -1,7 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Reset() {
-  const [isOpen, setIsOpen] = useState(false);
+  const UI_KEY = "ui.reset.open";
+
+  const safeParseBool = (v, fallback) => {
+    try {
+      const parsed = JSON.parse(v);
+      return typeof parsed === "boolean" ? parsed : fallback;
+    } catch {
+      return fallback;
+    }
+  };
+
+  const [isOpen, setIsOpen] = useState(() => {
+    const saved = localStorage.getItem(UI_KEY);
+    return saved ? safeParseBool(saved, false) : false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(UI_KEY, JSON.stringify(isOpen));
+  }, [isOpen]);
 
   return (
     <section>
