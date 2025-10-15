@@ -12,6 +12,7 @@ import StationList from "../components/StationList2";
 import StationNameGen from "../components/StationNameGen";
 import Inputs2 from "../components/Inputs2";
 import Output2 from "../components/Output2";
+import Backup from "../components/Backup";
 import Reset from "../components/Reset";
 
 function Generator2Page() {
@@ -135,6 +136,7 @@ function Generator2Page() {
           }
         />
 
+        <Backup />
         <Reset />
       </main>
     </>
