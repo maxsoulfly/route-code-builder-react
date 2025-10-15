@@ -47,12 +47,12 @@ function AddStation({ onAddStation, stations }) {
 
   return (
     <section>
-      <div className="stack">
-        <h2 onClick={() => setIsOpen((v) => !v)} style={{ cursor: "pointer" }}>
-          Add Station {isOpen ? "▲" : "▼"}
-        </h2>
+      <h2 onClick={() => setIsOpen((v) => !v)} style={{ cursor: "pointer" }}>
+        Add Station {isOpen ? "▲" : "▼"}
+      </h2>
 
-        {isOpen && (
+      {isOpen && (
+        <div className="stack">
           <div className="row">
             <input
               placeholder="Code"
@@ -82,12 +82,12 @@ function AddStation({ onAddStation, stations }) {
               Add Station
             </button>
           </div>
-        )}
+        </div>
+      )}
 
-        {newStationWarning && (
-          <p className="warnings-output warning">{newStationWarning}</p>
-        )}
-      </div>
+      {newStationWarning && (
+        <p className="warnings-output warning">{newStationWarning}</p>
+      )}
     </section>
   );
 }

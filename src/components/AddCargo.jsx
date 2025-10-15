@@ -47,58 +47,56 @@ function AddCargo({ onAddCargo, cargos, handleResetCargos }) {
 
   return (
     <section>
-      <div className="stack">
-        <h2 onClick={() => setIsOpen((v) => !v)} style={{ cursor: "pointer" }}>
-          Add Cargo {isOpen ? "▲" : "▼"}
-        </h2>
+      <h2 onClick={() => setIsOpen((v) => !v)} style={{ cursor: "pointer" }}>
+        Add Cargo {isOpen ? "▲" : "▼"}
+      </h2>
 
-        {isOpen && (
-          <>
-            <div className="row">
-              <input
-                placeholder="Code"
-                value={newCargoCode}
-                onChange={(e) => setNewCargoCode(e.target.value.toUpperCase())}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    handleAddCargo();
-                  }
-                }}
-              />
-              <input
-                placeholder="Label"
-                value={newCargoLabel}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  setNewCargoLabel(value);
-                  setNewCargoCode(suggestCargoCode(value, existingCodes));
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    handleAddCargo();
-                  }
-                }}
-              />
-              <button type="button" className="btn" onClick={handleAddCargo}>
-                Add Cargo
-              </button>
-            </div>
-            <div className="row">
-              <button
-                type="button"
-                className="btn red"
-                onClick={handleResetCargos}
-              >
-                Reset custom cargos (this climate)
-              </button>
-            </div>
-          </>
-        )}
+      {isOpen && (
+        <div className="stack">
+          <div className="row">
+            <input
+              placeholder="Code"
+              value={newCargoCode}
+              onChange={(e) => setNewCargoCode(e.target.value.toUpperCase())}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleAddCargo();
+                }
+              }}
+            />
+            <input
+              placeholder="Label"
+              value={newCargoLabel}
+              onChange={(e) => {
+                const value = e.target.value;
+                setNewCargoLabel(value);
+                setNewCargoCode(suggestCargoCode(value, existingCodes));
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleAddCargo();
+                }
+              }}
+            />
+            <button type="button" className="btn" onClick={handleAddCargo}>
+              Add Cargo
+            </button>
+          </div>
+          <div className="row">
+            <button
+              type="button"
+              className="btn red"
+              onClick={handleResetCargos}
+            >
+              Reset custom cargos (this climate)
+            </button>
+          </div>
+        </div>
+      )}
 
-        {newCargoWarning && (
-          <p className="warnings-output warning">{newCargoWarning}</p>
-        )}
-      </div>
+      {newCargoWarning && (
+        <p className="warnings-output warning">{newCargoWarning}</p>
+      )}
     </section>
   );
 }

@@ -36,7 +36,7 @@ function StationList({ stations, onRemoveStation }) {
       </h2>
 
       {isOpen && (
-        <div>
+        <div className="stack">
           <div className="row">
             <label>
               Filter Stations:

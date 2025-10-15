@@ -45,7 +45,7 @@ function Backup() {
       </h2>
 
       {isOpen && (
-        <div>
+        <div className="stack">
           <p className="row">
             <button
               type="button"
