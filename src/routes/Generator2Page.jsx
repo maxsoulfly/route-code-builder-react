@@ -1,4 +1,10 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+
+import {
+  buildMergedCargos,
+  onCustomCargosChanged,
+  upsertCustomCargo,
+} from "../utils/cargo";
 
 import {
   MODES,
@@ -8,6 +14,7 @@ import {
   TAGS,
 } from "../data/dictionaries";
 import AddStation from "../components/AddStation";
+import AddCargo from "../components/AddCargo";
 import StationList from "../components/StationList2";
 import StationNameGen from "../components/StationNameGen";
 import Inputs2 from "../components/Inputs2";
@@ -99,6 +106,26 @@ function Generator2Page() {
     localStorage.setItem("gen.tag", JSON.stringify(tag));
   }, [station1, station2, station3, cargo, tag]);
 
+  const [customsVersion, setCustomsVersion] = useState(0);
+  useEffect(
+    () => onCustomCargosChanged(() => setCustomsVersion((v) => v + 1)),
+    []
+  );
+
+  const mergedCargos = useMemo(() => {
+    const defaultsObj = (CARGO_BY_CLIMATE[climate] || []).map(
+      ([code, label]) => ({ code, label })
+    );
+    return buildMergedCargos(defaultsObj, climate);
+  }, [climate, customsVersion]);
+
+  function handleAddCargo([code, label]) {
+    upsertCustomCargo(climate, {
+      code: String(code).toUpperCase().trim(),
+      label: String(label).trim(),
+    });
+  }
+
   return (
     <>
       <main
@@ -111,7 +138,15 @@ function Generator2Page() {
 
         <Inputs2
           stations={stations}
-          values={{ climate, station1, station2, station3, cargo, tag }}
+          cargos={mergedCargos}
+          values={{
+            climate,
+            station1,
+            station2,
+            station3,
+            cargo,
+            tag,
+          }}
           handlers={{
             setClimate,
             setStation1,
@@ -120,6 +155,11 @@ function Generator2Page() {
             setCargo,
             setTag,
           }}
+        />
+
+        <AddCargo
+          onAddCargo={handleAddCargo}
+          cargos={mergedCargos.map(({ code, label }) => [code, label])}
         />
 
         <StationNameGen climate={climate} />

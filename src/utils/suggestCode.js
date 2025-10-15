@@ -1,3 +1,4 @@
+// src/utils/suggestCode.js
 function getFirstChar(word) {
   return word[0] ? word[0].toUpperCase() : "";
 }

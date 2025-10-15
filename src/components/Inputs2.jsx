@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-
 import { TAGS, CLIMATES, CARGO_BY_CLIMATE } from "../data/dictionaries";
 
-function Inputs2({ stations, values, handlers }) {
+function Inputs2({ stations, cargos, values, handlers }) {
   const { climate, station1, station2, station3, cargo, tag } = values;
   const {
     setClimate,
@@ -204,7 +203,7 @@ function Inputs2({ stations, values, handlers }) {
             </div>
 
             <div className="cargo-options">
-              {CARGO_BY_CLIMATE[climate].map(([code, label]) => (
+              {cargos.map(({ code, label }) => (
                 <label
                   key={code}
                   className={`cargo-option ${cargo.includes(code) ? "checked" : ""}`}
