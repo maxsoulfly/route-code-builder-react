@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { TAGS, CLIMATES, CARGO_BY_CLIMATE } from "../data/dictionaries";
 
-function Inputs2({ stations, cargos, values, handlers }) {
+function Inputs2({ stations, cargos, values, handlers, onRemoveCargo }) {
   const { climate, station1, station2, station3, cargo, tag } = values;
   const {
     setClimate,
@@ -203,7 +203,7 @@ function Inputs2({ stations, cargos, values, handlers }) {
             </div>
 
             <div className="cargo-options">
-              {cargos.map(({ code, label }) => (
+              {cargos.map(({ code, label, source }) => (
                 <label
                   key={code}
                   className={`cargo-option ${cargo.includes(code) ? "checked" : ""}`}
@@ -220,6 +220,21 @@ function Inputs2({ stations, cargos, values, handlers }) {
                     }
                   />
                   {label}
+                  {source === "custom" && (
+                    <button
+                      type="button"
+                      className="cargo-remove"
+                      aria-label={`Remove ${label}`}
+                      title="Remove custom cargo"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        onRemoveCargo && onRemoveCargo(code);
+                      }}
+                    >
+                      X
+                    </button>
+                  )}
                 </label>
               ))}
             </div>

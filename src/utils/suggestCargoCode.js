@@ -1,19 +1,19 @@
 // src/utils/suggestCargoCode.js
 
-function toWords(name) {
+const toWords = (name) => {
   return String(name || "")
     .trim()
     .split(/\s+/)
     .filter(Boolean);
-}
+};
 
-function isUnique(code, existing) {
+const isUnique = (code, existing) => {
   const up = String(code).toUpperCase();
   const set = new Set(existing.map((c) => String(c).toUpperCase()));
   return !set.has(up);
-}
+};
 
-export default function suggestCargoCode(name, existingCodes = []) {
+const suggestCargoCode = (name, existingCodes = []) => {
   const words = toWords(name);
   if (words.length === 0) return "";
 
@@ -59,4 +59,6 @@ export default function suggestCargoCode(name, existingCodes = []) {
 
   // last-resort (still 2 chars)
   return (first + "X").slice(0, 2).toUpperCase();
-}
+};
+
+export default suggestCargoCode;

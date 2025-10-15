@@ -23,7 +23,7 @@ const KEY_LIST = [
   "data.cargo.toyland",
 ];
 
-function readLS(key, fallback) {
+const readLS = (key, fallback) => {
   const raw = localStorage.getItem(key);
   if (raw === null) {
     return fallback;
@@ -33,9 +33,9 @@ function readLS(key, fallback) {
   } catch {
     return fallback;
   }
-}
+};
 
-export function buildExportPayload() {
+const buildExportPayload = () => {
   return {
     schemaVersion: EXPORT_SCHEMA_VERSION,
     exportedAt: new Date().toISOString(),
@@ -66,9 +66,9 @@ export function buildExportPayload() {
       tag: readLS("gen.tag", ""),
     },
   };
-}
+};
 
-export function formatBackUpFilename(date = new Date()) {
+const formatBackUpFilename = (date = new Date()) => {
   const pad = (n) => String(n).padStart(2, "0");
   const y = date.getFullYear();
   const m = pad(date.getMonth() + 1);
@@ -76,9 +76,9 @@ export function formatBackUpFilename(date = new Date()) {
   const hh = pad(date.getHours());
   const mm = pad(date.getMinutes());
   return `backup-${y}-${m}-${d}-${hh}-${mm}.json`;
-}
+};
 
-export function downloadExport() {
+const downloadExport = () => {
   const payload = buildExportPayload();
   const filename = formatBackUpFilename();
   const blob = new Blob([JSON.stringify(payload, null, 2)], {
@@ -90,10 +90,10 @@ export function downloadExport() {
   a.download = filename;
   a.click();
   window.URL.revokeObjectURL(url);
-}
+};
 
 // --- import parsing ---
-export function parseBackup(text) {
+const parseBackup = (text) => {
   try {
     const json = JSON.parse(text);
     if (typeof json !== "object" || !json) {
@@ -112,9 +112,9 @@ export function parseBackup(text) {
   } catch (e) {
     return { ok: false, error: e.message };
   }
-}
+};
 
-export function applyBackup(payload) {
+const applyBackup = (payload) => {
   if (!payload || payload.schemaVersion !== 1) {
     console.error("Invalid backup payload");
     return;
@@ -160,4 +160,12 @@ export function applyBackup(payload) {
 
   // 3. reload app
   window.location.reload();
-}
+};
+
+export {
+  buildExportPayload,
+  formatBackUpFilename,
+  downloadExport,
+  parseBackup,
+  applyBackup,
+};

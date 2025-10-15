@@ -1,20 +1,20 @@
 // src/utils/suggestCode.js
-function getFirstChar(word) {
+const getFirstChar = (word) => {
   return word[0] ? word[0].toUpperCase() : "";
-}
+};
 
-function isUnique(code, existingCodes) {
+const isUnique = (code, existingCodes) => {
   return !existingCodes.includes(code);
-}
+};
 
-function shouldSkipChar(char, first, last, seen) {
+const shouldSkipChar = (char, first, last, seen) => {
   if (!/[A-Z0-9]/i.test(char)) return true;
   char = char.toUpperCase();
   if (char === first || char === last) return true;
   if (seen.has(char)) return true;
-}
+};
 
-function tryCandidates(words, existingCodes) {
+const tryCandidates = (words, existingCodes) => {
   const seen = new Set();
 
   if (words.length === 1) {
@@ -63,9 +63,9 @@ function tryCandidates(words, existingCodes) {
       }
     }
   }
-}
+};
 
-export default function suggestCode(name, existingCodes = []) {
+const suggestCode = (name, existingCodes = []) => {
   if (!name) return "";
 
   let base = "";
@@ -93,4 +93,5 @@ export default function suggestCode(name, existingCodes = []) {
   }
 
   return base;
-}
+};
+export default suggestCode;

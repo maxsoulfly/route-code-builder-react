@@ -322,3 +322,50 @@ nav.nav a.active {
   background-color: var(--info-clr);
   color           : white;
 }
+
+
+
+/* make each cargo chip a positioning context */
+.cargo-option {
+  position     : relative;
+  padding-right: 28px;
+  /* room for X */
+}
+
+/* minimal label wrapper, keeps text aligned */
+.cargo-label {
+  display       : inline-block;
+  pointer-events: none;
+  /* clicking text still toggles checkbox via label */
+}
+
+/* the small 'X' button */
+.cargo-remove {
+  position     : absolute;
+  top          : -6px;
+  right        : -6px;
+  width        : 20px;
+  height       : 20px;
+  border-radius: 10px;
+  border       : 1px solid #555;
+  background   : #1a1d22;
+  color        : #c9d1d9;
+  font-size    : 12px;
+  line-height  : 18px;
+  text-align   : center;
+  cursor       : pointer;
+  padding      : 0;
+  /* reset */
+}
+
+/* hover/focus states */
+.cargo-remove:hover {
+  background  : #2a2f36;
+  border-color: var(--info-clr);
+  color       : var(--info-clr);
+}
+
+.cargo-remove:focus {
+  outline       : 2px solid var(--info-clr);
+  outline-offset: 1px;
+}

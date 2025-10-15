@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import suggestCargoCode from "../utils/suggestCargoCode"; // optional: or keep inside this file
 
-function AddCargo({ onAddCargo, cargos }) {
+function AddCargo({ onAddCargo, cargos, handleResetCargos }) {
   const [newCargoCode, setNewCargoCode] = useState("");
   const [newCargoLabel, setNewCargoLabel] = useState("");
   const [newCargoWarning, setNewCargoWarning] = useState("");
@@ -53,35 +53,46 @@ function AddCargo({ onAddCargo, cargos }) {
         </h2>
 
         {isOpen && (
-          <div className="row">
-            <input
-              placeholder="Code"
-              value={newCargoCode}
-              onChange={(e) => setNewCargoCode(e.target.value.toUpperCase())}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleAddCargo();
-                }
-              }}
-            />
-            <input
-              placeholder="Label"
-              value={newCargoLabel}
-              onChange={(e) => {
-                const value = e.target.value;
-                setNewCargoLabel(value);
-                setNewCargoCode(suggestCargoCode(value, existingCodes));
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleAddCargo();
-                }
-              }}
-            />
-            <button type="button" className="btn" onClick={handleAddCargo}>
-              Add Cargo
-            </button>
-          </div>
+          <>
+            <div className="row">
+              <input
+                placeholder="Code"
+                value={newCargoCode}
+                onChange={(e) => setNewCargoCode(e.target.value.toUpperCase())}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleAddCargo();
+                  }
+                }}
+              />
+              <input
+                placeholder="Label"
+                value={newCargoLabel}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setNewCargoLabel(value);
+                  setNewCargoCode(suggestCargoCode(value, existingCodes));
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleAddCargo();
+                  }
+                }}
+              />
+              <button type="button" className="btn" onClick={handleAddCargo}>
+                Add Cargo
+              </button>
+            </div>
+            <div className="row">
+              <button
+                type="button"
+                className="btn red"
+                onClick={handleResetCargos}
+              >
+                Reset custom cargos (this climate)
+              </button>
+            </div>
+          </>
         )}
 
         {newCargoWarning && (

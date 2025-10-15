@@ -4,6 +4,8 @@ import {
   buildMergedCargos,
   onCustomCargosChanged,
   upsertCustomCargo,
+  removeCustomCargo,
+  resetCustomCargos,
 } from "../utils/cargo";
 
 import {
@@ -119,12 +121,28 @@ function Generator2Page() {
     return buildMergedCargos(defaultsObj, climate);
   }, [climate, customsVersion]);
 
-  function handleAddCargo([code, label]) {
+  const handleAddCargo = ([code, label]) => {
     upsertCustomCargo(climate, {
       code: String(code).toUpperCase().trim(),
       label: String(label).trim(),
     });
-  }
+  };
+
+  const handleRemoveCargo = (code) => {
+    setCargo((prev) => prev.filter((c) => c !== code));
+    removeCustomCargo(climate, code);
+  };
+
+  const handleResetCargos = () => {
+    // also clear any selected custom cargos from UI
+    setCargo((prev) => {
+      const customs = mergedCargos
+        .filter((x) => x.source === "custom")
+        .map((x) => x.code);
+      return prev.filter((c) => !customs.includes(c));
+    });
+    resetCustomCargos(climate);
+  };
 
   return (
     <>
@@ -155,11 +173,13 @@ function Generator2Page() {
             setCargo,
             setTag,
           }}
+          onRemoveCargo={handleRemoveCargo}
         />
 
         <AddCargo
           onAddCargo={handleAddCargo}
           cargos={mergedCargos.map(({ code, label }) => [code, label])}
+          handleResetCargos={handleResetCargos}
         />
 
         <StationNameGen climate={climate} />

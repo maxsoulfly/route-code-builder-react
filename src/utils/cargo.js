@@ -1,9 +1,9 @@
 // src/utils/cargo.js
 const CUSTOMS_EVENT = "custom-cargo-sync";
 
-export function notifyCustomCargosChanged() {
+const notifyCustomCargosChanged = () => {
   window.dispatchEvent(new Event(CUSTOMS_EVENT));
-}
+};
 
 export function onCustomCargosChanged(handler) {
   window.addEventListener(CUSTOMS_EVENT, handler);
@@ -13,7 +13,7 @@ export function onCustomCargosChanged(handler) {
     window.removeEventListener("storage", handler);
   };
 }
-export function readCustomCargos(climate) {
+const readCustomCargos = (climate) => {
   const key = `data.cargo.${climate}`;
   try {
     const raw = localStorage.getItem(key);
@@ -27,10 +27,10 @@ export function readCustomCargos(climate) {
   } catch {
     return [];
   }
-}
+};
 
 // Normalize (trim, UPPERCASE codes) and de-dupe by code (keep the LAST occurrence)
-export function normalizeCustomCargos(list) {
+const normalizeCustomCargos = (list) => {
   if (!Array.isArray(list)) return [];
 
   // clean + normalize
@@ -55,9 +55,9 @@ export function normalizeCustomCargos(list) {
   });
 
   return out;
-}
+};
 
-export function buildMergedCargos(defaultList, climate) {
+const buildMergedCargos = (defaultList, climate) => {
   const customs = normalizeCustomCargos(readCustomCargos(climate));
 
   // start with defaults
@@ -78,13 +78,38 @@ export function buildMergedCargos(defaultList, climate) {
   });
 
   return merged;
-}
+};
 
-export function upsertCustomCargo(climate, { code, label }) {
+const upsertCustomCargo = (climate, { code, label }) => {
   const list = readCustomCargos(climate);
   const norm = normalizeCustomCargos([...list, { code, label }]); // keep last
   localStorage.setItem(`data.cargo.${climate}`, JSON.stringify(norm));
 
   // refresh listeners (same-tab + cross-tab)
   window.dispatchEvent(new Event("custom-cargo-sync")); // notify
+};
+
+const removeCustomCargo = (climate, code) => {
+  const uppercase = String(code || "")
+    .toUpperCase()
+    .trim();
+  if (!uppercase) return;
+  const list = normalizeCustomCargos(readCustomCargos(climate));
+  const next = list.filter((x) => x.code !== uppercase);
+  localStorage.setItem(`data.cargo.${climate}`, JSON.stringify(next));
+  notifyCustomCargosChanged();
+};
+
+export function resetCustomCargos(climate) {
+  localStorage.removeItem(`data.cargo.${climate}`);
+  notifyCustomCargosChanged();
 }
+
+export {
+  notifyCustomCargosChanged,
+  readCustomCargos,
+  normalizeCustomCargos,
+  buildMergedCargos,
+  upsertCustomCargo,
+  removeCustomCargo,
+};
