@@ -220,6 +220,14 @@ function Inputs2({ stations, cargos, values, handlers, onRemoveCargo }) {
                 />
                 {label}
                 {source === "custom" && (
+                  <span
+                    className="cargo-badge"
+                    title="Custom cargo"
+                    aria-hidden
+                  />
+                )}
+
+                {source === "custom" && (
                   <button
                     type="button"
                     className="cargo-remove"

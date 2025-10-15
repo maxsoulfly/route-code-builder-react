@@ -51,6 +51,9 @@ Example:
 - **Copy-to-clipboard** → one-click to paste into your game
 - Modular React components for clean structure
 - **Reset All Data** → If you ever want to start fresh
+- **Custom Cargo Manager** → add/remove 2-letter cargos per climate (saved in localStorage), Custom indicator & quick delete
+- **Per-climate cargo merge** → custom cargos override defaults by code
+- **Backup/Restore (JSON)** → export/import all app data
 
 ---
 

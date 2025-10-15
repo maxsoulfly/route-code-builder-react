@@ -369,3 +369,22 @@ nav.nav a.active {
   outline       : 2px solid var(--info-clr);
   outline-offset: 1px;
 }
+
+/* room for a tiny badge */
+.cargo-option {
+  position    : relative;
+  padding-left: 18px;
+}
+
+/* small glowing dot to indicate custom */
+.cargo-badge {
+  position      : absolute;
+  left          : 6px;
+  bottom        : 6px;
+  width         : 6px;
+  height        : 6px;
+  border-radius : 50%;
+  background    : var(--info-clr);
+  box-shadow    : 0 0 4px var(--info-clr);
+  pointer-events: none;
+}
