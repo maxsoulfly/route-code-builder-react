@@ -121,6 +121,16 @@ function Generator2Page() {
     return buildMergedCargos(defaultsObj, climate);
   }, [climate, customsVersion]);
 
+  useEffect(() => {
+    const valid = new Set(mergedCargos.map((x) => x.code));
+    setCargo((prev) => {
+      const filtered = prev.filter((c) => valid.has(c));
+      if (filtered.length > 0) return filtered;
+      // pick first available if nothing left
+      return mergedCargos[0] ? [mergedCargos[0].code] : [];
+    });
+  }, [climate, mergedCargos]);
+
   const handleAddCargo = ([code, label]) => {
     upsertCustomCargo(climate, {
       code: String(code).toUpperCase().trim(),
