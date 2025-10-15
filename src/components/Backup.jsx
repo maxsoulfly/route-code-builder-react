@@ -1,5 +1,19 @@
-import { useEffect, useState } from "react";
-import { downloadExport } from "../utils/backup";
+import React, { useEffect, useState, useRef } from "react";
+import { downloadExport, parseBackup, applyBackup } from "../utils/backup";
+
+async function handleImportFile(e) {
+  const file = e.target.files?.[0];
+  if (!file) return;
+  const text = await file.text();
+  const res = parseBackup(text);
+
+  if (!res.ok) {
+    console.error(res.error);
+  } else {
+    applyBackup(res.payload); // <-- use payload, not res
+  }
+  e.target.value = "";
+}
 
 function Backup() {
   const UI_KEY = "ui.backup.open";
@@ -22,6 +36,8 @@ function Backup() {
     localStorage.setItem(UI_KEY, JSON.stringify(isOpen));
   }, [isOpen]);
 
+  const fileInputRef = useRef(null);
+
   return (
     <section>
       <h2 onClick={() => setIsOpen(!isOpen)} style={{ cursor: "pointer" }}>
@@ -38,12 +54,18 @@ function Backup() {
             >
               Export JSON
             </button>
+            <input
+              type="file"
+              ref={fileInputRef}
+              accept="application/json"
+              style={{ display: "none" }}
+              onChange={handleImportFile}
+            />
+
             <button
               type="button"
               className="btn yellow"
-              onClick={() => {
-                console.log("import click");
-              }}
+              onClick={() => fileInputRef.current?.click()}
             >
               Import JSON
             </button>

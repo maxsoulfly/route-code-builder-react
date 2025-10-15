@@ -91,3 +91,73 @@ export function downloadExport() {
   a.click();
   window.URL.revokeObjectURL(url);
 }
+
+// --- import parsing ---
+export function parseBackup(text) {
+  try {
+    const json = JSON.parse(text);
+    if (typeof json !== "object" || !json) {
+      return { ok: false, error: "Invalid JSON structure" };
+    }
+    if (json.schemaVersion !== EXPORT_SCHEMA_VERSION) {
+      return { ok: false, error: "Invalid schema version" };
+    }
+    if (!json.data || !json.ui || !json.selections) {
+      return { ok: false, error: "Missing required fields" };
+    }
+    if (!json.data.stations || !json.data.cargo || !json.data.tags) {
+      return { ok: false, error: "Invalid data structure" };
+    }
+    return { ok: true, payload: json };
+  } catch (e) {
+    return { ok: false, error: e.message };
+  }
+}
+
+export function applyBackup(payload) {
+  if (!payload || payload.schemaVersion !== 1) {
+    console.error("Invalid backup payload");
+    return;
+  }
+
+  // 1. clear current
+  localStorage.clear();
+
+  // --- write data ---
+  localStorage.setItem("stations", JSON.stringify(payload.data.stations || []));
+  localStorage.setItem("cities", JSON.stringify(payload.data.cities || []));
+  if (payload.data.cargo) {
+    for (const [climate, list] of Object.entries(payload.data.cargo)) {
+      localStorage.setItem(`data.cargo.${climate}`, JSON.stringify(list || []));
+    }
+  }
+  localStorage.setItem("data.tags", JSON.stringify(payload.data.tags || []));
+
+  // --- write ui ---
+  const ui = payload.ui || {};
+  for (const key of Object.keys(ui)) {
+    const val = ui[key]?.open ?? false;
+    localStorage.setItem(`ui.${key}.open`, JSON.stringify(val));
+  }
+
+  // --- write selections ---
+  const sel = payload.selections || {};
+  localStorage.setItem("climate", JSON.stringify(sel.climate || "temperate"));
+  localStorage.setItem(
+    "gen.station1",
+    JSON.stringify(sel.station1 || { code: "", label: "" })
+  );
+  localStorage.setItem(
+    "gen.station2",
+    JSON.stringify(sel.station2 || { code: "", label: "" })
+  );
+  localStorage.setItem(
+    "gen.station3",
+    JSON.stringify(sel.station3 || { code: "", label: "" })
+  );
+  localStorage.setItem("gen.cargo", JSON.stringify(sel.cargo || []));
+  localStorage.setItem("gen.tag", JSON.stringify(sel.tag || ""));
+
+  // 3. reload app
+  window.location.reload();
+}
